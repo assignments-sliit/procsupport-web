@@ -30,7 +30,7 @@ const Login = () => {
     } else if (!user.password) {
       alert("Enter Password");
     } else if (!user.username && !user.password) {
-      alert("Enter Admin Credentials");
+      alert("Enter Credentials");
     } else {
       console.log(user);
       try {
@@ -47,6 +47,8 @@ const Login = () => {
       
               if(userType === userTypes.APPROVER) {
                 navigate("/viewApproverList");
+              } else if(userType === userTypes.ADMIN) {
+                navigate("/userList");
               } else if(userType === userTypes.PURCHASER) {
                 navigate("/approvedPurchaseList");
               } else if(userType === userTypes.RECEIVER) {
@@ -54,6 +56,8 @@ const Login = () => {
               } else if(userType === userTypes.REQUESTOR) {
                 navigate("/viewPRList");
               }
+            } else if (res.status === 404) {
+              alert("Incorrect username or password")
             } else {
               alert("Login Failed! Please try again!");
             }
