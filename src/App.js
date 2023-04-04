@@ -11,6 +11,8 @@ import Login from "./components/auth/Login";
 import ApprovedPurchaseList from "./components/purchaser/ApprovedPurchaseList";
 import PRListView from "./components/requestor/PRListview";
 import ApproverListView from "./components/approver/ApproverListView";
+import ReceiverListView from "./components/receiver/ViewDeliveryList";
+import UserList from "./components/admin/UsersList";
 
 class App extends Component {
   render() {
@@ -59,13 +61,13 @@ class App extends Component {
                 element={<ViewSelectedPRRecord />}
               />
             </Routes> */}
-            {/* <Routes>
+            <Routes>
               <Route
                 exact
                 path="/viewDeliveryList"
-                element={<ReceiverListView />}
+                element={<ReceiverListView/>}
               />
-            </Routes> */}
+            </Routes>
             {/* <Routes>
               <Route
                 exact
@@ -80,6 +82,13 @@ class App extends Component {
                 element={<CreateNewDelivery />}
               />
             </Routes> */}
+            <Routes>
+              <Route
+                exact
+                path="/userList"
+                element={<UserList />}
+              />
+            </Routes>
           </div>
           <Footer />
         </div>
