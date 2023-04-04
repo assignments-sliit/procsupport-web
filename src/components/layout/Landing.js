@@ -15,7 +15,7 @@ class Landing extends Component {
                   Managing your Orders easily within a second!
                 </p>
                 <hr />
-                <Link to="/login" className="btn btn-lg btn-info">
+                <Link to="/login" className="btn btn-lg btn-primary">
                   Get Started
                 </Link>
               </div>
