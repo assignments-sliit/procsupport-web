@@ -25,12 +25,12 @@ const Login = () => {
       password,
     };
 
-    if (!user.username) {
-      alert("Enter username");
+    if (!user.username && !user.password) {
+      alert("Login Failed! Please enter Credentials");
     } else if (!user.password) {
-      alert("Enter Password");
-    } else if (!user.username && !user.password) {
-      alert("Enter Credentials");
+      alert("Login Failed! Please enter Password");
+    } else if (!user.username ) {
+      alert("Login Failed! Please enter Username");
     } else {
       console.log(user);
       try {
@@ -56,15 +56,22 @@ const Login = () => {
               } else if(userType === userTypes.REQUESTOR) {
                 navigate("/viewPRList");
               }
-            } else if (res.status === 404) {
-              alert("Incorrect username or password")
             } else {
               alert("Login Failed! Please try again!");
             }
           });
       } catch (e) {
-        console.log(e);
+        if(e.response?.status === 401){
+          alert("Login Failed! Please enter the correct password")
+        }
+        else if(e.response?.status === 404){
+          alert("Login Failed! Please enter a correct username")
+        }
+        else {
+          alert("Login Failed! Please try again!");
+        }
       }
+      
     }
   }
 
