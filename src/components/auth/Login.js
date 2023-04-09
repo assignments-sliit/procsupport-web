@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import {useNavigate} from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 import { userTypes } from "../../utils/constants";
 
 const Login = () => {
@@ -11,11 +11,11 @@ const Login = () => {
 
   const onChangeID = (e) => {
     setUsername(e.target.value);
-  }
+  };
 
   const onChangePassword = (e) => {
     setPassword(e.target.value);
-  }
+  };
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -29,13 +29,13 @@ const Login = () => {
       alert("Login Failed! Please enter Credentials");
     } else if (!user.password) {
       alert("Login Failed! Please enter Password");
-    } else if (!user.username ) {
+    } else if (!user.username) {
       alert("Login Failed! Please enter Username");
     } else {
       console.log(user);
       try {
         await axios
-          .post("http://localhost:5000/api/users/login", {
+          .post(`${process.env.backendUrl}/api/users/login`, {
             username,
             password,
           })
@@ -44,16 +44,16 @@ const Login = () => {
               console.log(res.data);
               const userType = res.data.data.usertype;
               localStorage.setItem("token", res.data.data.token);
-      
-              if(userType === userTypes.APPROVER) {
+
+              if (userType === userTypes.APPROVER) {
                 navigate("/viewApproverList");
-              } else if(userType === userTypes.ADMIN) {
+              } else if (userType === userTypes.ADMIN) {
                 navigate("/userList");
-              } else if(userType === userTypes.PURCHASER) {
+              } else if (userType === userTypes.PURCHASER) {
                 navigate("/approvedPurchaseList");
-              } else if(userType === userTypes.RECEIVER) {
+              } else if (userType === userTypes.RECEIVER) {
                 navigate("/viewDeliveryList");
-              } else if(userType === userTypes.REQUESTOR) {
+              } else if (userType === userTypes.REQUESTOR) {
                 navigate("/viewPRList");
               }
             } else {
@@ -61,19 +61,16 @@ const Login = () => {
             }
           });
       } catch (e) {
-        if(e.response?.status === 401){
-          alert("Login Failed! Please enter the correct password")
-        }
-        else if(e.response?.status === 404){
-          alert("Login Failed! Please enter a correct username")
-        }
-        else {
+        if (e.response?.status === 401) {
+          alert("Login Failed! Please enter the correct password");
+        } else if (e.response?.status === 404) {
+          alert("Login Failed! Please enter a correct username");
+        } else {
           alert("Login Failed! Please try again!");
         }
       }
-      
     }
-  }
+  };
 
   return (
     <div className="login">
@@ -105,16 +102,13 @@ const Login = () => {
                   onChange={onChangePassword}
                 />
               </div>
-              <input
-                type="submit"
-                className="btn btn-success btn-block mt-4"
-              />
+              <input type="submit" className="btn btn-success btn-block mt-4" />
             </form>
           </div>
         </div>
       </div>
     </div>
   );
-}
+};
 
 export default Login;
