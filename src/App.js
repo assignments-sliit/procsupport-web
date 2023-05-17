@@ -5,17 +5,22 @@ import { Provider } from "react-redux";
 import "./App.css";
 
 //import component layouts
+import AddNewUser from "./components/admin/AddNewUser";
+import ViewUserList from "./components/admin/ViewUserList";
+import UserList from "./components/admin/UsersList";
 import Navbar from "./components/layout/Navbar";
 import Landing from "./components/layout/Landing";
 import Footer from "./components/layout/Footer";
 import Login from "./components/auth/Login";
+import CreatePurchaseOrder from "./components/purchaser/CreatePurchaseOrder";
 import ApprovedPurchaseList from "./components/purchaser/ApprovedPurchaseList";
 import PRListView from "./components/requestor/PRListview";
+import AddNewPR from "./components/requestor/AddNewPR";
 import ApproverListView from "./components/approver/ApproverListView";
-import AddNewUser from "./components/admin/AddNewUser";
-//import ViewUserList from "./components/admin/ViewUserList";
+import ViewSelectedPRRecord from "./components/approver/ViewSelectedPRRecord";
 import ReceiverListView from "./components/receiver/ViewDeliveryList";
-import UserList from "./components/admin/UsersList";
+import ViewSelectedDelivery from "./components/receiver/ViewSelectedDelivery";
+import CreateNewDelivery from "./components/receiver/CreateNewDelivery";
 
 import store from "./store";
 
@@ -52,6 +57,31 @@ const App = () => {
 
           <Route exact path="/addNewUser" element={<AddNewUser />} />
         </Routes>
+        
+         <Routes>
+              <Route exact path="/addNewPR" element={<AddNewPR />} />
+            </Routes>
+          
+          <Routes>
+          <Route
+                exact path="/createPurchaseOrder" element={<CreatePurchaseOrder />} />
+            </Routes>
+
+            <Routes>
+              <Route
+                exact
+                path="/viewSelectedPRRecord/:id"
+                element={<ViewSelectedPRRecord />}
+              />
+            </Routes>
+            
+            <Routes>
+              <Route
+                exact
+                path="/createDelivery"
+                element={<CreateNewDelivery />}
+              />
+            </Routes>
 
         <Footer />
       </Router>
