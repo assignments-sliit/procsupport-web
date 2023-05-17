@@ -115,7 +115,7 @@ const AddNewUser = ({ setAlert, addUser, isAuthenticated }) => {
               </div>
               <input
                 type="submit"
-                className="btn btn-success btn-lg btn-block"
+                className="btn btn-md btn-success float-right"
                 value="Add new user"
               />
             </form>

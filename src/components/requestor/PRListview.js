@@ -126,7 +126,7 @@ class PRListView extends Component {
                 </table>
               </div>
               <br />
-              <Link to="/addNewPR" className="btn btn-md btn-info float-right">
+              <Link to="/addNewPR" className="btn btn-primary float-right">
                 <i className="fa-duotone fa-plus"></i> Add Purchase Request
               </Link>
             </div>

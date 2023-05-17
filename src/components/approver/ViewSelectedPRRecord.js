@@ -184,7 +184,7 @@ class ViewSelectedPRRecord extends Component {
 
               <Link
                 to="/viewApproverList"
-                className="btn btn-md btn-info float-right"
+                className="btn btn-primary float-right"
               >
                 View all purchase requests
               </Link>
