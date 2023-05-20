@@ -113,7 +113,7 @@ class ViewSelectedDelivery extends Component {
 
               <Link
                 to="/viewDeliveryList"
-                className="btn btn-md btn-info float-right"
+                className="btn btn-primary float-right"
               >
                 View all deliveries
               </Link>

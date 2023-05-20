@@ -96,7 +96,7 @@ class CreatePurchaseOrder extends Component {
         <div className="container">
           <div className="row">
             <div className="col-md-12 text-center">
-              <h1 className="display-3 mb-4">Create Purchase Order</h1>
+              <h4 className="display-3 mb-4">Create Purchase Order</h4>
               <hr />
             </div>
           </div>
@@ -113,13 +113,13 @@ class CreatePurchaseOrder extends Component {
                 </button>
               </div>
               <div className="col-6 col-md-4">
-                <button
+                {/* <button
                   type="cancle"
                   className="btn btn-warning" 
                   onClick={() => setInputValue("")}
                 >
                   Cancle
-                </button>
+                </button> */}
               </div>
             </div>
             <hr />
