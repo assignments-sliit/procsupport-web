@@ -29,51 +29,47 @@ class ApprovedPurchaseList extends Component {
     };
   }
 
-  getApprovedPurchase() {
-    axios
-      .get("http://localhost:5000/api/po/get/approved")
-      .then((response) => {
-        this.setState({
-          ApprovedPurchase: response.data,
-        });
-      })
-      .catch(function(error) {
-        console.log(error);
-      });
-  }
+  // getApprovedPurchase() {
+  //   axios
+  //     .get("http://localhost:5000/api/pr/get/all")
+  //     .then((response) => {
+  //       this.setState({
+  //         ApprovedPurchase: response.data,s
+  //       });
+  //     })
+  //     .catch(function(error) {
+  //       console.log(error);
+  //     });
+  // }
 
-  getBudget() {
-    axios
-      .get("http://localhost:5000/api/budget/get/pr")
-      .then((response) => {
-        this.setState({
-          Budget: response.data,
-        });
-      })
-      .catch(function(error) {
-        console.log(error);
-      });
-  }
+  // getBudget() {
+  //   axios
+  //     .get("http://localhost:5000/api/budget/get/pr")
+  //     .then((response) => {
+  //       this.setState({
+  //         Budget: response.data,
+  //       });
+  //     })
+  //     .catch(function(error) {
+  //       console.log(error);
+  //     });
+  // }
 
+  //token
   componentDidMount() {
-    this.ApprovedPurchaseList();
-    this.ViewBudget();
-
-    // axios.get("http://localhost:5000/api/po/get/approved").then((response) => {
-    //   this.setState({
-    //     ApprovedPurchase: response.data,
-    //   });
-    // })
-    // axios
-    //   .get("http://localhost:5000/api/budget/get/pr")
-    //   .then((response) => {
-    //     this.setState({
-    //       Budget: response.data,
-    //     });
-    //   })
-    //   .catch(function (error) {
-    //     console.log(error);
-    //   });
+    axios
+      .get("https://procsupport-api.onrender.com/api/po/get/approved", {
+        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+      })
+      .then((response) => {
+        console.log(response.data.response);
+        this.setState({
+          approvedPurchase: response.data.response
+        });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }
 
   ApprovedPurchaseList() {
@@ -92,12 +88,7 @@ class ApprovedPurchaseList extends Component {
       return <Budget budget={currentBudget} key={i} />;
     });
   }
-
-  // navigate = useNavigate();
-  // navigateToCreatePurchaseOrder(){
-  //   this.navigate('/CreatePurchaseOrder');
-  // };
-
+  
   onSubmit() {
     const { navigate } = this.props;
     // Navigate to Another Component
@@ -110,10 +101,10 @@ class ApprovedPurchaseList extends Component {
         <div className="container">
           <div className="row">
             <div className="col-md-12 text-center">
-              <h1 className="display-3 mb-4">Approved Purchase Request List</h1>
+              <h2>Approved Purchase Request List</h2>
               <hr />
-              <h3>Budget: LKR 200000 </h3>
-              <h3>{this.ViewBudget}</h3>
+              {/* <h3>Budget: LKR 200000 </h3> */}
+              <h3>Budget: {this.ViewBudget}</h3>
             </div>
           </div>
           <hr />
@@ -130,35 +121,29 @@ class ApprovedPurchaseList extends Component {
               <tr>
                 <th scope="col">#</th>
                 <th scope="col">PR ID</th>
-                <th scope="col">Name</th>
                 <th scope="col">Description</th>
                 <th scope="col">Amount</th>
+                <th scope="col">supplier Id</th>
                 <th scope="col">Created On</th>
                 <th scope="col">Updated On</th>
                 <th scope="col">Status</th>
               </tr>
             </thead>
             <tbody>
-              {/* <tr>
-                <th scope="row">
-                  <div class="form-check form-check-inline">
-                    <input
-                      class="form-check-input"
-                      type="checkbox"
-                      id="inlineCheckbox1"
-                      value="option1"
-                    />
-                  </div>
-                </th>
-                <td>PR-001</td>
-                <td>PR Name</td>
-                <td>Blah blah</td>
-                <td>LKR 4,000</td>
-                <td>08/11/2022</td>
-                <td>08/11/2022</td>
-                <td>Approved</td>
-              </tr> */}
-              {this.ApprovedPurchaseList()}
+            {this.state.approvedPurchase.map((approvedPO) => (
+                      <tr
+                        key={approvedPO.poid}
+                        className={approvedPO.selected ? "selected" : ""}
+                      >
+                        <td>{approvedPO.prid}</td>
+                        <td>{approvedPO.description}</td>
+                        <td>{approvedPO.amount}</td>
+                        <td>{approvedPO.supplierId}</td>
+                        <td>{approvedPO.createdOn}</td>
+                        <td>{approvedPO.updatedOn}</td>
+                        <td>{approvedPO.status}</td>
+                      </tr>
+                    ))}
             </tbody>
           </table>
         </div>
