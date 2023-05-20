@@ -13,7 +13,7 @@ import ApprovedPurchaseList from "./components/purchaser/ApprovedPurchaseList";
 import PRListView from "./components/requestor/PRListview";
 import ApproverListView from "./components/approver/ApproverListView";
 import AddNewUser from "./components/admin/AddNewUser";
-//import ViewUserList from "./components/admin/ViewUserList";
+import ViewUserList from "./components/admin/ViewUserList";
 import ReceiverListView from "./components/receiver/ViewDeliveryList";
 import UserList from "./components/admin/UsersList";
 
@@ -48,7 +48,7 @@ const App = () => {
             element={<ReceiverListView />}
           />
 
-          <Route exact path="/userList" element={<UserList />} />
+          <Route exact path="/viewUserList" element={<UserList />} />
 
           <Route exact path="/addNewUser" element={<AddNewUser />} />
         </Routes>
