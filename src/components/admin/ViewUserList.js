@@ -53,7 +53,7 @@ const ViewUserList = ({ getUserAccounts, userRec: { users, loading } }) => {
                 <br />
                 <Link
                   to="/addNewUser"
-                  className="btn btn-md btn-info float-right"
+                  className="btn btn-primary float-right"
                 >
                   <i className="fa-duotone fa-plus"></i> Create new user
                 </Link>
