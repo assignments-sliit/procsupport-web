@@ -56,6 +56,7 @@ class UsersList extends Component {
                 <table className="table">
                   <thead>
                     <tr>
+                      <th scope="col">Employee Name</th>
                       <th scope="col">Username</th>
                       <th scope="col">User Type</th>
                       <th scope="col">User Status</th>
@@ -67,6 +68,7 @@ class UsersList extends Component {
                         key={user.id}
                         className={user.selected ? "selected" : ""}
                       >
+                        <td>{user.name}</td>
                         <td>{user.username}</td>
                         <td>{user.usertype}</td>
                         <td>{user.userstatus}</td>
@@ -76,8 +78,11 @@ class UsersList extends Component {
                 </table>
               </div>
               <br />
-              <Link to="/addNewPR" className="btn btn-md btn-info float-right">
-                <i className="fa-duotone fa-plus"></i> Add Purchase Request
+              <Link
+                to="/addNewUser"
+                className="btn btn-md btn-info float-right"
+              >
+                <i className="fa-duotone fa-plus"></i> Add New User
               </Link>
             </div>
           </div>
