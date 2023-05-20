@@ -13,7 +13,7 @@ const ViewUserList = ({ getUserAccounts, userRec: { users, loading } }) => {
   }, [getUserAccounts]);
 
   return (
-    <section className="container">
+    <section className="viewUserList">
       {loading ? (
         <Spinner />
       ) : (

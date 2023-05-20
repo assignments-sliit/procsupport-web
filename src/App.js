@@ -6,7 +6,6 @@ import "./App.css";
 
 //import component layouts
 import AddNewUser from "./components/admin/AddNewUser";
-import ViewUserList from "./components/admin/ViewUserList";
 import UserList from "./components/admin/UsersList";
 import Navbar from "./components/layout/Navbar";
 import Landing from "./components/layout/Landing";
@@ -19,7 +18,7 @@ import AddNewPR from "./components/requestor/AddNewPR";
 import ApproverListView from "./components/approver/ApproverListView";
 import ViewSelectedPRRecord from "./components/approver/ViewSelectedPRRecord";
 import ReceiverListView from "./components/receiver/ViewDeliveryList";
-import ViewSelectedDelivery from "./components/receiver/ViewSelectedDelivery";
+//import ViewSelectedDelivery from "./components/receiver/ViewSelectedDelivery";
 import CreateNewDelivery from "./components/receiver/CreateNewDelivery";
 
 import store from "./store";
@@ -53,14 +52,17 @@ const App = () => {
             element={<ReceiverListView />}
           />
 
-          <Route exact path="/userList" element={<UserList />} />
+          <Route exact path="/viewUserList" element={<UserList />} />
 
           <Route exact path="/addNewUser" element={<AddNewUser />} />
 
           <Route exact path="/addNewPR" element={<AddNewPR />} />
 
           <Route
-            exact path="/createPurchaseOrder" element={<CreatePurchaseOrder />} />
+            exact
+            path="/createPurchaseOrder"
+            element={<CreatePurchaseOrder />}
+          />
 
           <Route
             exact
@@ -68,11 +70,7 @@ const App = () => {
             element={<ViewSelectedPRRecord />}
           />
 
-          <Route
-            exact
-            path="/createDelivery"
-            element={<CreateNewDelivery />}
-          />
+          <Route exact path="/createDelivery" element={<CreateNewDelivery />} />
         </Routes>
 
         <Footer />

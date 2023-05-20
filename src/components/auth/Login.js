@@ -48,7 +48,7 @@ const Login = () => {
               if (userType === userTypes.APPROVER) {
                 navigate("/viewApproverList");
               } else if (userType === userTypes.ADMIN) {
-                navigate("/userList");
+                navigate("/viewUserList");
               } else if (userType === userTypes.PURCHASER) {
                 navigate("/approvedPurchaseList");
               } else if (userType === userTypes.RECEIVER) {
