@@ -2,64 +2,6 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-// const list = [
-//   {
-//     id: 1,
-//     selected: false,
-//     prid: "PR001",
-//     prName: "Ervin Howell",
-//     description: "Shanna@melissa.tv",
-//     amount: "010-692-6593 x09125",
-//     createdOn: "anastasia.net",
-//     updatedOn: "anastasia.net",
-//     status: "Pending",
-//   },
-//   {
-//     id: 2,
-//     selected: false,
-//     prid: "PR002",
-//     prName: "Ervin Howell",
-//     description: "Shanna@melissa.tv",
-//     amount: "010-692-6593 x09125",
-//     createdOn: "anastasia.net",
-//     updatedOn: "anastasia.net",
-//     status: "Pending",
-//   },
-//   {
-//     id: 3,
-//     selected: false,
-//     prid: "PR003",
-//     prName: "Ervin Howell",
-//     description: "Shanna@melissa.tv",
-//     amount: "010-692-6593 x09125",
-//     createdOn: "anastasia.net",
-//     updatedOn: "anastasia.net",
-//     status: "Pending",
-//   },
-//   {
-//     id: 4,
-//     selected: false,
-//     prid: "PR004",
-//     prName: "Ervin Howell",
-//     description: "Shanna@melissa.tv",
-//     amount: "010-692-6593 x09125",
-//     createdOn: "anastasia.net",
-//     updatedOn: "anastasia.net",
-//     status: "Pending",
-//   },
-//   {
-//     id: 5,
-//     selected: false,
-//     prid: "PR005",
-//     prName: "Ervin Howell",
-//     description: "Shanna@melissa.tv",
-//     amount: "010-692-6593 x09125",
-//     createdOn: "anastasia.net",
-//     updatedOn: "anastasia.net",
-//     status: "Pending",
-//   },
-// ];
-
 const PR = (props) => {
   <tr>
     <td>{props.pr.prid}</td>
@@ -152,9 +94,9 @@ class ApproverListView extends Component {
         <div className="container">
           <div className="row">
             <div className="col-md-128 m-auto">
-              <h3 className="mb-2 text-center">Available Budget</h3>
+              {/* <h3 className="mb-2 text-center">Available Budget</h3>
               <p className="text-center h1">50000.00 LKR</p>
-              <br /> <br />
+              <br /> <br /> */}
               <h3 className="mb-2 float-left">All Purchase Requests</h3>
               <br />
               <br />
@@ -162,7 +104,7 @@ class ApproverListView extends Component {
                 <table className="table">
                   <thead>
                     <tr>
-                      <th></th>
+                      <th scope="col"></th>
                       <th scope="col">PR ID</th>
                       <th scope="col">PR Name</th>
                       <th scope="col">Description</th>
@@ -176,7 +118,7 @@ class ApproverListView extends Component {
                     {this.state.List.map((approver) => (
                       <tr
                         key={approver.id}
-                        className={approver.selected ? "selected" : ""}
+                        className={approver.selected ? "selected" : " "}
                       >
                         <th scope="row">
                           <input

@@ -2,18 +2,6 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-/*const PR = (props) => {
-  <tr>
-    <td>{props.pr.prid}</td>
-    <td>{props.pr.prName}</td>
-    <td>{props.pr.description}</td>
-    <td>{props.pr.amount}</td>
-    <td>{props.pr.createdOn}</td>
-    <td>{props.pr.updatedOn}</td>
-    <td>{props.pr.status}</td>
-  </tr>;
-};*/
-
 class PRListView extends Component {
   constructor(props) {
     super(props);
@@ -126,7 +114,7 @@ class PRListView extends Component {
                 </table>
               </div>
               <br />
-              <Link to="/addNewPR" className="btn btn-md btn-info float-right">
+              <Link to="/addNewPR" className="btn btn-primary float-right">
                 <i className="fa-duotone fa-plus"></i> Add Purchase Request
               </Link>
             </div>
