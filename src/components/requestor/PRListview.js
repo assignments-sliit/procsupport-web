@@ -12,55 +12,20 @@ class PRListView extends Component {
       prs: [],
     };
   }
-
-  // Select/ UnSelect Table rows
-  onMasterCheck(e) {
-    let tempList = this.state.List;
-    // Check/ UnCheck All Items
-    tempList.map((requestor) => (requestor.selected = e.target.checked));
-
-    //Update State
-    this.setState({
-      MasterChecked: e.target.checked,
-      List: tempList,
-      SelectedList: this.state.List.filter((e) => e.selected),
-    });
-  }
-
-  // Update List Item's state and Master Checkbox State
-  onItemCheck(e, item) {
-    let tempList = this.state.List;
-    tempList.map((user) => {
-      console.log("-------------", user, item);
-      if (user._id === item._id) {
-        user.selected = e.target.checked;
-      }
-      return user;
-    });
-
-    //To Control Master Checkbox State
-    const totalItems = this.state.List.length;
-    const totalCheckedItems = tempList.filter((e) => e.selected).length;
-
-    // Update State
-    this.setState({
-      MasterChecked: totalItems === totalCheckedItems,
-      List: tempList,
-      SelectedList: this.state.List.filter((e) => e.selected),
-    });
-  }
-
   componentDidMount() {
     axios
-      .get("http://localhost:5000/api/pr/get/all")
-      .then((response) => {
-        this.setState({
-          List: response.data.purchase_requests,
-        });
-      })
-      .catch(function (error) {
-        console.log(error);
+    .get("https://procsupport-api.onrender.com/api/pr/get/all", {
+      headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+    })
+    .then((response) => {
+      console.log(response.data.response);
+      this.setState({
+        List: response.data.purchase_requests
       });
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
   }
 
   render() {
@@ -69,14 +34,17 @@ class PRListView extends Component {
         <div className="container">
           <div className="row">
             <div className="col-md-128 m-auto">
-              <h3 className="mb-2 float-left">Your Purchase Requests</h3>
-              <br />
-              <br />
+              <h2>Your Purchase Requests</h2>
+              <hr />
+              <Link to="/addNewPR" className="btn btn-md btn-success float-right">
+                <i className="fa-duotone fa-plus"></i> Add Purchase Request
+              </Link>
+              <br/>
+              <br/>
               <div className="table-responsive-lg">
                 <table className="table">
                   <thead>
-                    <tr>
-                      <th></th>
+                    <tr class="table-success">
                       <th scope="col">PR ID</th>
                       <th scope="col">PR Name</th>
                       <th scope="col">Description</th>
@@ -92,7 +60,7 @@ class PRListView extends Component {
                         key={requestor.id}
                         className={requestor.selected ? "selected" : ""}
                       >
-                        <th scope="row">
+                        {/* <th scope="row">
                           <input
                             type="checkbox"
                             checked={requestor.selected}
@@ -100,7 +68,7 @@ class PRListView extends Component {
                             id="rowcheck{user.id}"
                             onChange={(e) => this.onItemCheck(e, requestor)}
                           />
-                        </th>
+                        </th> */}
                         <td>{requestor.prid}</td>
                         <td>{requestor.prName}</td>
                         <td>{requestor.description}</td>
@@ -113,10 +81,6 @@ class PRListView extends Component {
                   </tbody>
                 </table>
               </div>
-              <br />
-              <Link to="/addNewPR" className="btn btn-primary float-right">
-                <i className="fa-duotone fa-plus"></i> Add Purchase Request
-              </Link>
             </div>
           </div>
         </div>

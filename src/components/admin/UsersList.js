@@ -49,13 +49,13 @@ class UsersList extends Component {
         <div className="container">
           <div className="row">
             <div className="col-md-128 m-auto">
-              <h3 className="mb-2 float-left">All User</h3>
+              <h2>All Users</h2>
               <br />
               <br />
               <div className="table-responsive-lg">
                 <table className="table">
                   <thead>
-                    <tr>
+                    <tr class="table-success">
                       <th scope="col">Employee Name</th>
                       <th scope="col">Username</th>
                       <th scope="col">User Type</th>

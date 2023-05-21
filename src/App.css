@@ -34,7 +34,14 @@ img {
   width: 100%;
 }
 
+h2{
+  color: #0d5208;
+  font-size: xxx-large;
+  font-family: ui-rounded;
+  text-align: center;
+}
 /* Utilities */
+
 .container {
   max-width: 1100px;
   margin: auto;
@@ -288,7 +295,7 @@ button {
   color: #0077b5;
 }
 
-.table th,
+/* .table th,
 .table td {
   padding: 1rem;
   text-align: left;
@@ -296,7 +303,7 @@ button {
 
 .table th {
   background: var(--light-color);
-}
+} */
 
 /* Navbar */
 .navbar {
