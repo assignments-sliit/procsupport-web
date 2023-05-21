@@ -56,8 +56,8 @@ class ApprovedPurchaseList extends Component {
           <hr />
           <table className="table">
             <thead className="thead-dark">
-              <tr>
-                <th scope="col">#</th>
+              <tr class="table-success">
+                <th scope="col"> </th>
                 <th scope="col">PR ID</th>
                 <th scope="col">Description</th>
                 <th scope="col">Amount</th>

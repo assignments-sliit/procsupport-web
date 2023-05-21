@@ -44,7 +44,7 @@ class PRListView extends Component {
               <div className="table-responsive-lg">
                 <table className="table">
                   <thead>
-                    <tr>
+                    <tr class="table-success">
                       <th scope="col">PR ID</th>
                       <th scope="col">PR Name</th>
                       <th scope="col">Description</th>

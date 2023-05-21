@@ -81,7 +81,7 @@ class ReceiverListView extends Component {
               <div className="table-responsive-lg">
                 <table className="table">
                   <thead>
-                    <tr>
+                    <tr class="table-success">
                       <th></th>
                       <th scope="col">PO ID</th>
                       <th scope="col">Supplier</th>

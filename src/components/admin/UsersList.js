@@ -55,7 +55,7 @@ class UsersList extends Component {
               <div className="table-responsive-lg">
                 <table className="table">
                   <thead>
-                    <tr>
+                    <tr class="table-success">
                       <th scope="col">Employee Name</th>
                       <th scope="col">Username</th>
                       <th scope="col">User Type</th>
