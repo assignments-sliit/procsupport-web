@@ -96,7 +96,7 @@ class CreatePurchaseOrder extends Component {
         <div className="container">
           <div className="row">
             <div className="col-md-12 text-center">
-              <h4 className="display-3 mb-4">Create Purchase Order</h4>
+              <h2>Create Purchase Order</h2>
               <hr />
             </div>
           </div>

@@ -11,7 +11,7 @@ class AddNewPR extends Component {
         <div className="container">
           <div className="row">
             <div className="col-md-128 m-auto">
-              <h4 className="mb-2 float-left">Add New Purchase Request</h4>
+              <h2>Add New Purchase Request</h2>
               <br />
               <br />
               <br />

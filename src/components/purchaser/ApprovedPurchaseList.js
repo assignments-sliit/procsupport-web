@@ -2,60 +2,15 @@ import React, { Component } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
-const ApprovedPurchase = (props) => (
-  <tr>
-    <td>{props.ApprovedPurchaseList.poid}</td>
-    <td>{props.ApprovedPurchaseList.supplier}</td>
-    <td>{props.ApprovedPurchaseList.amount}</td>
-    <td>{props.ApprovedPurchaseList.createdon}</td>
-    <td>{props.ApprovedPurchaseList.description}</td>
-    <td>{props.ApprovedPurchaseList.prid}</td>
-  </tr>
-);
-
-const Budget = (props) => (
-  <tr>
-    <td>{props.ApprovedPurchaseList.budget}</td>
-  </tr>
-);
-
 class ApprovedPurchaseList extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
       approvedPurchase: [],
-      budget: [],
     };
   }
 
-  // getApprovedPurchase() {
-  //   axios
-  //     .get("http://localhost:5000/api/pr/get/all")
-  //     .then((response) => {
-  //       this.setState({
-  //         ApprovedPurchase: response.data,s
-  //       });
-  //     })
-  //     .catch(function(error) {
-  //       console.log(error);
-  //     });
-  // }
-
-  // getBudget() {
-  //   axios
-  //     .get("http://localhost:5000/api/budget/get/pr")
-  //     .then((response) => {
-  //       this.setState({
-  //         Budget: response.data,
-  //       });
-  //     })
-  //     .catch(function(error) {
-  //       console.log(error);
-  //     });
-  // }
-
-  //token
   componentDidMount() {
     axios
       .get("https://procsupport-api.onrender.com/api/po/get/approved", {
@@ -72,23 +27,6 @@ class ApprovedPurchaseList extends Component {
       });
   }
 
-  ApprovedPurchaseList() {
-    return this.state.approvedPurchase.map(function(
-      currentApprovedPurchase,
-      i
-    ) {
-      return (
-        <ApprovedPurchase approvedPurchase={currentApprovedPurchase} key={i} />
-      );
-    });
-  }
-
-  ViewBudget() {
-    return this.state.budget.map(function(currentBudget, i) {
-      return <Budget budget={currentBudget} key={i} />;
-    });
-  }
-  
   onSubmit() {
     const { navigate } = this.props;
     // Navigate to Another Component
@@ -103,8 +41,8 @@ class ApprovedPurchaseList extends Component {
             <div className="col-md-12 text-center">
               <h2>Approved Purchase Request List</h2>
               <hr />
-              {/* <h3>Budget: LKR 200000 </h3> */}
-              <h3>Budget: {this.ViewBudget}</h3>
+              <h3>Budget: LKR 200000 </h3>
+              {/* <h3>Budget: {this.ViewBudget}</h3> */}
             </div>
           </div>
           <hr />

@@ -34,7 +34,14 @@ img {
   width: 100%;
 }
 
+h2{
+  color: #0d5208;
+  font-size: xxx-large;
+  font-family: ui-rounded;
+  text-align: center;
+}
 /* Utilities */
+
 .container {
   max-width: 1100px;
   margin: auto;

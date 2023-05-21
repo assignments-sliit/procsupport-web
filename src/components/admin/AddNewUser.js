@@ -51,10 +51,11 @@ const AddNewUser = ({ setAlert, addUser, isAuthenticated }) => {
         <div className="row">
           <div className="col-md-8 m-auto">
             <h3 className="mb-2 float-left">
-              <b>Add New User</b>
+              <h2>Add New User</h2>
             </h3>
             <br />
             <br />
+            <hr></hr>
             <p className="lead">* All fields are required.</p>
             <br />
             <form className="form" onSubmit={onSubmit}>

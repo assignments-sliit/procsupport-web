@@ -2,18 +2,6 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-const PR = (props) => {
-  <tr>
-    <td>{props.pr.prid}</td>
-    <td>{props.pr.prName}</td>
-    <td>{props.pr.description}</td>
-    <td>{props.pr.amount}</td>
-    <td>{props.pr.createdOn}</td>
-    <td>{props.pr.updatedOn}</td>
-    <td>{props.pr.status}</td>
-  </tr>;
-};
-
 class ApproverListView extends Component {
   constructor(props) {
     super(props);
@@ -25,66 +13,19 @@ class ApproverListView extends Component {
     };
   }
 
-  // Select/ UnSelect Table rows
-  onMasterCheck(e) {
-    let tempList = this.state.List;
-    // Check/ UnCheck All Items
-    tempList.map((approver) => (approver.selected = e.target.checked));
-
-    //Update State
-    this.setState({
-      MasterChecked: e.target.checked,
-      List: tempList,
-      SelectedList: this.state.List.filter((e) => e.selected),
-    });
-  }
-
-  // Update List Item's state and Master Checkbox State
-  onItemCheck(e, item) {
-    let tempList = this.state.List;
-    tempList.map((user) => {
-      console.log("-------------", user, item);
-      if (user._id === item._id) {
-        user.selected = e.target.checked;
-      }
-      return user;
-    });
-
-    //To Control Master Checkbox State
-    const totalItems = this.state.List.length;
-    const totalCheckedItems = tempList.filter((e) => e.selected).length;
-
-    // Update State
-    this.setState({
-      MasterChecked: totalItems === totalCheckedItems,
-      List: tempList,
-      SelectedList: this.state.List.filter((e) => e.selected),
-    });
-  }
-
-  // Event to get selected rows(Optional)
-  // getSelectedRows() {
-  //   console.log('----------', this.state.List)
-  //   this.setState({
-  //     SelectedList: this.state.List.filter((e) => e.selected),
-  //   });
-  // }
-
   componentDidMount() {
     axios
-      .get("http://localhost:5000/api/pr/get/all")
-      .then((response) => {
-        this.setState({
-          List: response.data.purchase_requests,
-        });
-      })
-      .catch(function (error) {
-        console.log(error);
+    .get("https://procsupport-api.onrender.com/api/pr/get/all", {
+      headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+    })
+    .then((response) => {
+      console.log(response.data.response);
+      this.setState({
+        List: response.data.purchase_requests
       });
-  }
-  prList() {
-    return this.state.courses.map(function (currentPRs, i) {
-      return <PR pr={currentPRs} key={i} />;
+    })
+    .catch(function (error) {
+      console.log(error);
     });
   }
 
@@ -97,14 +38,13 @@ class ApproverListView extends Component {
               {/* <h3 className="mb-2 text-center">Available Budget</h3>
               <p className="text-center h1">50000.00 LKR</p>
               <br /> <br /> */}
-              <h3 className="mb-2 float-left">All Purchase Requests</h3>
+              <h2>All Purchase Requests</h2>
               <br />
               <br />
               <div className="table-responsive-lg">
                 <table className="table">
                   <thead>
                     <tr>
-                      <th scope="col"></th>
                       <th scope="col">PR ID</th>
                       <th scope="col">PR Name</th>
                       <th scope="col">Description</th>
@@ -120,7 +60,7 @@ class ApproverListView extends Component {
                         key={approver.id}
                         className={approver.selected ? "selected" : " "}
                       >
-                        <th scope="row">
+                        {/* <th scope="row">
                           <input
                             type="checkbox"
                             checked={approver.selected}
@@ -128,7 +68,7 @@ class ApproverListView extends Component {
                             id="rowcheck{user.id}"
                             onChange={(e) => this.onItemCheck(e, approver)}
                           />
-                        </th>
+                        </th> */}
                         <td>{approver.prid}</td>
                         <td>{approver.prName}</td>
                         <td>{approver.description}</td>

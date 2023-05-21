@@ -51,7 +51,7 @@ class ViewSelectedPRRecord extends Component {
         <div className="container">
           <div className="row">
             <div className="col-md-128 m-auto">
-              <h4 className="mb-2 float-left">Purchase Request</h4>
+              <h2>Purchase Request</h2>
               <br />
               <br />
               <br />

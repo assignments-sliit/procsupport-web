@@ -75,7 +75,7 @@ class ReceiverListView extends Component {
         <div className="container">
           <div className="row">
             <div className="col-md-128 m-auto">
-              <h3 className="mb-2 float-left">Purchase Orders Deliveries</h3>
+              <h2>Purchase Orders Deliveries</h2>
               <br />
               <br />
               <div className="table-responsive-lg">
