@@ -35,8 +35,12 @@ class PRListView extends Component {
           <div className="row">
             <div className="col-md-128 m-auto">
               <h2>Your Purchase Requests</h2>
-              <br />
-              <br />
+              <hr />
+              <Link to="/addNewPR" className="btn btn-md btn-success float-right">
+                <i className="fa-duotone fa-plus"></i> Add Purchase Request
+              </Link>
+              <br/>
+              <br/>
               <div className="table-responsive-lg">
                 <table className="table">
                   <thead>
@@ -77,10 +81,6 @@ class PRListView extends Component {
                   </tbody>
                 </table>
               </div>
-              <br />
-              <Link to="/addNewPR" className="btn btn-primary float-right">
-                <i className="fa-duotone fa-plus"></i> Add Purchase Request
-              </Link>
             </div>
           </div>
         </div>
