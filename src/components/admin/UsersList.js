@@ -49,7 +49,9 @@ class UsersList extends Component {
         <div className="container">
           <div className="row">
             <div className="col-md-128 m-auto">
-              <h3 className="mb-2 float-left">All User</h3>
+              <br />
+              <br />
+              <h3 className="mb-2 float-left">List of Users</h3>
               <br />
               <br />
               <div className="table-responsive-lg">
