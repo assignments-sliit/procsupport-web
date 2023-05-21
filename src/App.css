@@ -295,7 +295,7 @@ button {
   color: #0077b5;
 }
 
-.table th,
+/* .table th,
 .table td {
   padding: 1rem;
   text-align: left;
@@ -303,7 +303,7 @@ button {
 
 .table th {
   background: var(--light-color);
-}
+} */
 
 /* Navbar */
 .navbar {

@@ -13,20 +13,42 @@ class ApproverListView extends Component {
     };
   }
 
+  onItemCheck(e, item) {
+    let tempList = this.state.List;
+    tempList.map((user) => {
+      console.log("-------------", user, item);
+      if (user._id === item._id) {
+        user.selected = e.target.checked;
+      }
+      return user;
+    });
+
+    //To Control Master Checkbox State
+    const totalItems = this.state.List.length;
+    const totalCheckedItems = tempList.filter((e) => e.selected).length;
+
+    // Update State
+    this.setState({
+      MasterChecked: totalItems === totalCheckedItems,
+      List: tempList,
+      SelectedList: this.state.List.filter((e) => e.selected),
+    });
+  }
+
   componentDidMount() {
     axios
-    .get("https://procsupport-api.onrender.com/api/pr/get/all", {
-      headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-    })
-    .then((response) => {
-      console.log(response.data.response);
-      this.setState({
-        List: response.data.purchase_requests
+      .get("https://procsupport-api.onrender.com/api/pr/get/all", {
+        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+      })
+      .then((response) => {
+        console.log(response.data.response);
+        this.setState({
+          List: response.data.purchase_requests
+        });
+      })
+      .catch(function (error) {
+        console.log(error);
       });
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
   }
 
   render() {
@@ -34,17 +56,15 @@ class ApproverListView extends Component {
       <div className="viewApproverList">
         <div className="container">
           <div className="row">
-            <div className="col-md-128 m-auto">
-              {/* <h3 className="mb-2 text-center">Available Budget</h3>
-              <p className="text-center h1">50000.00 LKR</p>
-              <br /> <br /> */}
+            <div>
               <h2>All Purchase Requests</h2>
               <br />
               <br />
               <div className="table-responsive-lg">
                 <table className="table">
                   <thead>
-                    <tr>
+                    <tr class="table-success">
+                      <th scope="col">             </th>
                       <th scope="col">PR ID</th>
                       <th scope="col">PR Name</th>
                       <th scope="col">Description</th>
@@ -52,6 +72,7 @@ class ApproverListView extends Component {
                       <th scope="col">Created On</th>
                       <th scope="col">Updated On</th>
                       <th scope="col">Status</th>
+                      <th scope="col">Action</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -60,7 +81,7 @@ class ApproverListView extends Component {
                         key={approver.id}
                         className={approver.selected ? "selected" : " "}
                       >
-                        {/* <th scope="row">
+                        <th scope="row">
                           <input
                             type="checkbox"
                             checked={approver.selected}
@@ -68,7 +89,7 @@ class ApproverListView extends Component {
                             id="rowcheck{user.id}"
                             onChange={(e) => this.onItemCheck(e, approver)}
                           />
-                        </th> */}
+                        </th>
                         <td>{approver.prid}</td>
                         <td>{approver.prName}</td>
                         <td>{approver.description}</td>
@@ -76,19 +97,15 @@ class ApproverListView extends Component {
                         <td>{approver.createdOn}</td>
                         <td>{approver.updatedOn}</td>
                         <td>{approver.status}</td>
+                        <td> <Link to={`/viewSelectedPRRecord/${this.state.List.filter((e) => e.selected)[0]?.prid
+                            }`}>
+                              <button checked={approver.selected} className="btn btn-success" id="rowcheck{user.id}" onClick={(e) => this.onItemCheck(e, approver)}>
+                          Action
+                        </button></Link></td>
                       </tr>
                     ))}
                   </tbody>
                 </table>
-                <Link
-                  to={`/viewSelectedPRRecord/${
-                    this.state.List.filter((e) => e.selected)[0]?.prid
-                  }`}
-                >
-                  <button className="btn btn-primary float-right">
-                    View Purchase Request details
-                  </button>
-                </Link>
                 <br />
                 <br />
               </div>

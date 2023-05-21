@@ -33,7 +33,21 @@ class ViewSelectedPRRecord extends Component {
 
   approvePR() {
     axios
-      .put("http://localhost:5000/api/pr/status/approve", {
+      .put("http://localhost:5000/api/pr/auth/status/approve", {
+        token: localStorage.getItem("token"),
+        prid: this.state.pr?.prid,
+      })
+      .then((response) => {
+        if (response.status === 200) {
+          this.props.navigate("/viewApproverList");
+        }
+      })
+      .catch((error) => {});
+  }
+
+  rejectPR() {
+    axios
+      .put("http://localhost:5000/api/pr/auth/status/decline", {
         token: localStorage.getItem("token"),
         prid: this.state.pr?.prid,
       })
@@ -52,10 +66,28 @@ class ViewSelectedPRRecord extends Component {
           <div className="row">
             <div className="col-md-128 m-auto">
               <h2>Purchase Request</h2>
-              <br />
-              <br />
-              <br />
+              <hr />
+              {this.state.pr?.status === "NEW" && (
+                <>
+                  <button
+                    onClick={this.approvePR}
+                    className="btn btn-md btn-success float-left"
+                  >
+                    Approve purchase request
+                  </button>
 
+                  <button onclick={this.rejectPR} className="btn btn-md btn-danger">
+                    Reject purchase request
+                  </button>
+                </>
+              )}
+              <Link
+                to="/viewApproverList"
+                className="btn btn-primary float-right"
+              >
+                View all purchase requests
+              </Link>
+              <hr/>
               <form>
                 <div className="form-row">
                   <div className="form-group col-md-3">
@@ -121,7 +153,7 @@ class ViewSelectedPRRecord extends Component {
                     />
                   </div>
                 </div>
-                <hr />
+                {/* <hr />
                 <h5 className="mb-2 float-left">Materials details</h5>
                 <div className="table-responsive-lg">
                   <br />
@@ -163,31 +195,11 @@ class ViewSelectedPRRecord extends Component {
                       </tr>
                     </tbody>
                   </table>
-                </div>
+                </div> */}
               </form>
 
               <br />
-              {this.state.pr?.status === "NEW" && (
-                <>
-                  <button
-                    onClick={this.approvePR}
-                    className="btn btn-md btn-success float-left"
-                  >
-                    Approve purchase request
-                  </button>
-
-                  <button className="btn btn-md btn-danger">
-                    Reject purchase request
-                  </button>
-                </>
-              )}
-
-              <Link
-                to="/viewApproverList"
-                className="btn btn-primary float-right"
-              >
-                View all purchase requests
-              </Link>
+              
             </div>
           </div>
         </div>
