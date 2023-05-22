@@ -55,14 +55,16 @@ class CreatePurchaseOrder extends Component {
               <button
                 onClick={this.createPO}
                 className="btn btn-md btn-success float-left">
-                Create
+                Create Purchase Order
               </button>
               <Link
                 to="/viewApproverList"
                 className="btn btn-primary float-right">
                 View all purchase requests
               </Link>
-              <hr/>
+              
+              <br/>
+              <br/>
               <form>
                 <div className="row">
                   <div className="col-6 col-md-4">
