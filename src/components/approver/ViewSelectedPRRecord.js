@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import withRouter from "../../HOC/withRouter";
 import axios from "axios";
 
-//var DatePicker = require("react-bootstrap-date-picker");
 
 class ViewSelectedPRRecord extends Component {
   constructor(props) {

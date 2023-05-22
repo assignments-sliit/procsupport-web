@@ -10,6 +10,7 @@ class ApprovedPurchaseList extends Component {
       List: [],
       SelectedList: [],
       MasterChecked: false,
+      prs: [],
     };
   }
 
@@ -38,9 +39,9 @@ class ApprovedPurchaseList extends Component {
   componentDidMount() {
     axios
       .get("https://procsupport-api.onrender.com/api/pr/get/approved/all"
-      //  {
-      //   headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-      // }
+        //  {
+        //   headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+        // }
       )
       .then((response) => {
         console.log(response.data.response);
@@ -53,11 +54,11 @@ class ApprovedPurchaseList extends Component {
       });
   }
 
-  onSubmit() {
-    const { navigate } = this.props;
-    // Navigate to Another Component
-    navigate("/CreatePurchaseOrder");
-  }
+  // onSubmit() {
+  //   const { navigate } = this.props;
+  //   // Navigate to Another Component
+  //   navigate("/CreatePurchaseOrder");
+  // }
 
   render() {
     return (
@@ -66,61 +67,58 @@ class ApprovedPurchaseList extends Component {
           <div className="row">
             <div className="col-md-12 text-center">
               <h2>Approved Purchase Request List</h2>
-              <hr />
-              <h3>Budget: LKR 200000 </h3>
-              {/* <h3>Budget: {this.ViewBudget}</h3> */}
             </div>
           </div>
           <hr />
-          <div className="row">
-            <div className="col-6 col-md-2">
-           
-            </div>
+          <div className="table-responsive-lg">
+            <table className="table">
+              <thead>
+                <tr class="table-success">
+                  <th scope="col">             </th>
+                  <th scope="col">PR ID</th>
+                  <th scope="col">PR Name</th>
+                  <th scope="col">Description</th>
+                  <th scope="col">Amount</th>
+                  <th scope="col">Created On</th>
+                  <th scope="col">Updated On</th>
+                  <th scope="col">Status</th>
+                  <th scope="col">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                {this.state.List.map((approver) => (
+                  <tr
+                    key={approver.id}
+                    className={approver.selected ? "selected" : " "}
+                  >
+                    <th scope="row">
+                      <input
+                        type="checkbox"
+                        checked={approver.selected}
+                        className="form-check-input"
+                        id="rowcheck{user.id}"
+                        onChange={(e) => this.onItemCheck(e, approver)}
+                      />
+                    </th>
+                    <td>{approver.prid}</td>
+                    <td>{approver.prName}</td>
+                    <td>{approver.description}</td>
+                    <td>{approver.amount}</td>
+                    <td>{approver.createdOn}</td>
+                    <td>{approver.updatedOn}</td>
+                    <td>{approver.status}</td>
+                    <td> <Link to={`/createPurchaseOrder/${this.state.List.filter((e) => e.selected)[0]?.prid
+                      }`}>
+                      <button checked={approver.selected} className="btn btn-success" id="rowcheck{user.id}" onClick={(e) => this.onItemCheck(e, approver)}>
+                        Action
+                      </button></Link></td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+            <br />
+            <br />
           </div>
-          <hr />
-          <table className="table">
-            <thead>
-              <tr class="table-success">
-                <th scope="col">           </th>
-                <th scope="col">PR ID</th>
-                <th scope="col">Description</th>
-                <th scope="col">Amount</th>
-                <th scope="col">Created On</th>
-                <th scope="col">Updated On</th>
-                <th scope="col">Status</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-            {this.state.List.map((approvedPO) => (
-                      <tr
-                        key={approvedPO.poid}
-                        className={approvedPO.selected ? "selected" : ""}
-                      >
-                        <th scope="row">
-                          <input
-                            type="checkbox"
-                            checked={approvedPO.selected}
-                            className="form-check-input"
-                            id="rowcheck{user.id}"
-                            onChange={(e) => this.onItemCheck(e, approvedPO)}
-                          />
-                        </th>
-                        <td>{approvedPO.prid}</td>
-                        <td>{approvedPO.description}</td>
-                        <td>{approvedPO.amount}</td>
-                        <td>{approvedPO.createdOn}</td>
-                        <td>{approvedPO.updatedOn}</td>
-                        <td>{approvedPO.status}</td>
-                        <td> <Link to={`/CreatePurchaseOrder/${this.state.List.filter((e) => e.selected)[0]?.prid
-                            }`}>
-                              <button checked={approvedPO.selected} className="btn btn-success" id="rowcheck{user.id}" onClick={(e) => this.onItemCheck(e, approvedPO)}>
-                          Create an Order
-                        </button></Link></td>
-                      </tr>
-                    ))}
-            </tbody>
-          </table>
         </div>
       </div>
     );

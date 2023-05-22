@@ -6,25 +6,12 @@ class CreatePurchaseOrder extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      pr: null
+      pr: null,
+      po: null
     };
+
     this.createPO = this.createPO.bind(this);
   }
-
-  createPO() {
-    axios
-      .put(" http://localhost:5000/api/po/create", {
-        token: localStorage.getItem("token"),
-        prid: this.state.pr?.prid,
-      })
-      .then((response) => {
-        if (response.status === 200) {
-          this.props.navigate("/approvedPurchaseList");
-        }
-      })
-      .catch((error) => { });
-  }
-
 
   componentDidMount() {
     this.getPRRecord(this?.props?.params?.id);
@@ -40,6 +27,20 @@ class CreatePurchaseOrder extends Component {
         pr: response.data.purchase_request,
       });
     }
+  }
+
+  createPO() {
+    axios
+      .put(" http://localhost:5000/api/po/create", {
+        token: localStorage.getItem("token"),
+        poid: this.state.po?.poid,
+      })
+      .then((response) => {
+        if (response.status === 200) {
+          this.props.navigate("/approvedPurchaseList");
+        }
+      })
+      .catch((error) => { });
   }
 
 
@@ -109,18 +110,18 @@ class CreatePurchaseOrder extends Component {
                       required
                     />
                   </div>
-                  <div className="form-group col-md-3">
-                    <label htmlFor="prid">Description</label>
-                    <input
-                      type="text"
-                      className="form-control"
-                      id="prid"
-                      readOnly
-                      value={this.state.pr?.description}
-                    />
+                  <div className="form-group">
+                  <label htmlFor="description">Description</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="description"
+                    readOnly
+                    value={this.state.pr?.description}
+                  />
                   </div>
                   <div className="form-group col-md-3">
-                    <label htmlFor="prid">PR ID</label>
+                  <label htmlFor="prid">PR ID</label>
                     <input
                       type="text"
                       className="form-control"
