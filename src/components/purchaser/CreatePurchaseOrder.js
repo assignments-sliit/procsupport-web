@@ -58,7 +58,7 @@ class CreatePurchaseOrder extends Component {
                 Create Purchase Order
               </button>
               <Link
-                to="/viewApproverList"
+                to="/approvedPurchaseList"
                 className="btn btn-primary float-right">
                 View all purchase requests
               </Link>

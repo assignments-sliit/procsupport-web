@@ -37,13 +37,15 @@ class ApprovedPurchaseList extends Component {
 
   componentDidMount() {
     axios
-      .get("https://procsupport-api.onrender.com/api/po/get/approved", {
-        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-      })
+      .get("https://procsupport-api.onrender.com/api/pr/get/approved/all"
+      //  {
+      //   headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+      // }
+      )
       .then((response) => {
         console.log(response.data.response);
         this.setState({
-          List: response.data.response
+          List: response.data.data
         });
       })
       .catch(function (error) {
@@ -83,7 +85,6 @@ class ApprovedPurchaseList extends Component {
                 <th scope="col">PR ID</th>
                 <th scope="col">Description</th>
                 <th scope="col">Amount</th>
-                <th scope="col">supplier Id</th>
                 <th scope="col">Created On</th>
                 <th scope="col">Updated On</th>
                 <th scope="col">Status</th>
@@ -108,7 +109,6 @@ class ApprovedPurchaseList extends Component {
                         <td>{approvedPO.prid}</td>
                         <td>{approvedPO.description}</td>
                         <td>{approvedPO.amount}</td>
-                        <td>{approvedPO.supplierId}</td>
                         <td>{approvedPO.createdOn}</td>
                         <td>{approvedPO.updatedOn}</td>
                         <td>{approvedPO.status}</td>
