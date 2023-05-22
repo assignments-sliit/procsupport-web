@@ -13,6 +13,7 @@ class ViewSelectedPRRecord extends Component {
     };
 
     this.approvePR = this.approvePR.bind(this);
+    this.rejectPR = this.rejectPR.bind(this);
   }
 
   componentDidMount() {

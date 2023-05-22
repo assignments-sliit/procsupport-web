@@ -60,7 +60,7 @@ const App = () => {
 
           <Route
             exact
-            path="/createPurchaseOrder"
+            path="/createPurchaseOrder/:id"
             element={<CreatePurchaseOrder />}
           />
 

@@ -40,6 +40,11 @@ h2{
   font-family: ui-rounded;
   text-align: center;
 }
+h3{
+  color: #0d5208;
+  font-family: ui-rounded;
+}
+
 /* Utilities */
 
 .container {
