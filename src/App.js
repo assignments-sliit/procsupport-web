@@ -20,6 +20,7 @@ import ViewSelectedPRRecord from "./components/approver/ViewSelectedPRRecord";
 import ReceiverListView from "./components/receiver/ViewDeliveryList";
 //import ViewSelectedDelivery from "./components/receiver/ViewSelectedDelivery";
 import CreateNewDelivery from "./components/receiver/CreateNewDelivery";
+import AdminHomePage from "./components/admin/AdminHomePage";
 
 import store from "./store";
 
@@ -53,6 +54,8 @@ const App = () => {
           />
 
           <Route exact path="/viewUserList" element={<UserList />} />
+
+          <Route exact path="/adminHomePage" element={<AdminHomePage />} />
 
           <Route exact path="/addNewUser" element={<AddNewUser />} />
 
