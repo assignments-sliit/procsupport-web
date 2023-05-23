@@ -18,13 +18,10 @@ import AddNewPR from "./components/requestor/AddNewPR";
 import ApproverListView from "./components/approver/ApproverListView";
 import ViewSelectedPRRecord from "./components/approver/ViewSelectedPRRecord";
 import ReceiverListView from "./components/receiver/ViewDeliveryList";
-//import ViewSelectedDelivery from "./components/receiver/ViewSelectedDelivery";
 import CreateNewDelivery from "./components/receiver/CreateNewDelivery";
 import AdminHomePage from "./components/admin/AdminHomePage";
 import SupplierList from "./components/admin/SupplierList";
 import AddNewSupplier from "./components/admin/AddNewSupplier";
-import AddNewPRNew from "./components/requestor/AddNewPRNew"
-
 import store from "./store";
 
 const App = () => {
