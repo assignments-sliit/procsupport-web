@@ -48,7 +48,7 @@ const Login = () => {
               if (userType === userTypes.APPROVER) {
                 navigate("/viewApproverList");
               } else if (userType === userTypes.ADMIN) {
-                navigate("/viewUserList");
+                navigate("/adminHomePage");
               } else if (userType === userTypes.PURCHASER) {
                 navigate("/approvedPurchaseList");
               } else if (userType === userTypes.RECEIVER) {
@@ -102,7 +102,11 @@ const Login = () => {
                   onChange={onChangePassword}
                 />
               </div>
-              <input type="submit" className="btn btn-success btn-block mt-4" />
+              <input
+                type="submit"
+                className="btn btn-success btn-block mt-4"
+                value={"Login"}
+              />
             </form>
           </div>
         </div>

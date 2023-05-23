@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Provider } from "react-redux";
 
@@ -21,6 +21,8 @@ import ReceiverListView from "./components/receiver/ViewDeliveryList";
 //import ViewSelectedDelivery from "./components/receiver/ViewSelectedDelivery";
 import CreateNewDelivery from "./components/receiver/CreateNewDelivery";
 import AdminHomePage from "./components/admin/AdminHomePage";
+import SupplierList from "./components/admin/SupplierList";
+import AddNewSupplier from "./components/admin/AddNewSupplier";
 import AddNewPRNew from "./components/requestor/AddNewPRNew"
 
 import store from "./store";
@@ -54,12 +56,6 @@ const App = () => {
             element={<ReceiverListView />}
           />
 
-          <Route exact path="/viewUserList" element={<UserList />} />
-
-          <Route exact path="/adminHomePage" element={<AdminHomePage />} />
-
-          <Route exact path="/addNewUser" element={<AddNewUser />} />
-
           <Route exact path="/addNewPR" element={<AddNewPR />} />
 
           <Route
@@ -75,6 +71,13 @@ const App = () => {
           />
 
           <Route exact path="/createDelivery" element={<CreateNewDelivery />} />
+
+          {/* Admin tasks */}
+          <Route exact path="/adminHomePage" element={<AdminHomePage />} />
+          <Route exact path="/viewUserList" element={<UserList />} />
+          <Route exact path="/addNewUser" element={<AddNewUser />} />
+          <Route exact path="/viewSupplierList" element={<SupplierList />} />
+          <Route exact path="/addNewSupplier" element={<AddNewSupplier />} />
         </Routes>
 
 

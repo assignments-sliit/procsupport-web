@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-class UsersList extends Component {
+class SupplierList extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -30,12 +30,12 @@ class UsersList extends Component {
   //token
   componentDidMount() {
     axios
-      .get("https://procsupport-api.onrender.com/api/users/admin/get/all", {
+      .get("https://procsupport-api.onrender.com/api/suppliers/get/all", {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       })
       .then((response) => {
         this.setState({
-          List: response.data.users,
+          List: response.data.records,
         });
       })
       .catch(function (error) {
@@ -45,34 +45,34 @@ class UsersList extends Component {
 
   render() {
     return (
-      <div className="viewUserList">
+      <div className="viewSupplierList">
         <div className="container">
           <div className="row">
             <div className="col-md-128 m-auto">
               <br />
-              <h2>All Users</h2>
+              <h2>All Suppliers</h2>
 
               <br />
               <div className="table-responsive-lg">
                 <table className="table" style={{ width: "100%" }}>
-                  <thead>
-                    <tr class="table-success">
-                      <th scope="col">Employee Name</th>
+                  <thead style={{ textAlign: "center" }}>
+                    <tr className="table-success">
+                      <th scope="col">Supplier Name</th>
                       <th scope="col">Username</th>
-                      <th scope="col">User Type</th>
-                      <th scope="col">User Status</th>
+                      <th scope="col">Main Supply</th>
+                      <th scope="col">Address</th>
                     </tr>
                   </thead>
                   <tbody>
-                    {this.state.List.map((user) => (
+                    {this.state.List.map((supplier) => (
                       <tr
-                        key={user.id}
-                        className={user.selected ? "selected" : ""}
+                        key={supplier.id}
+                        className={supplier.selected ? "selected" : ""}
                       >
-                        <td>{user.name}</td>
-                        <td>{user.username}</td>
-                        <td>{user.usertype}</td>
-                        <td>{user.userstatus}</td>
+                        <td>{supplier.supplierName}</td>
+                        <td>{supplier.supplierUsername}</td>
+                        <td>{supplier.mainSupply}</td>
+                        <td>{supplier.address}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -80,10 +80,10 @@ class UsersList extends Component {
               </div>
               <br />
               <Link
-                to="/addNewUser"
+                to="/addNewSupplier"
                 className="btn btn-lg btn-primary float-right"
               >
-                <i className="fa-duotone fa-plus"></i> Add New User
+                <i className="fa-duotone fa-plus"></i> Add New Supplier
               </Link>
             </div>
           </div>
@@ -93,4 +93,4 @@ class UsersList extends Component {
   }
 }
 
-export default UsersList;
+export default SupplierList;

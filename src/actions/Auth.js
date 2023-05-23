@@ -6,7 +6,7 @@ import { REGISTER_SUCCESS, REGISTER_FAIL } from "./types";
 // Register a new user
 export const addUser = (formData) => async (dispatch) => {
   try {
-    const res = await api.post("/create", formData);
+    const res = await api.post("/users/create", formData);
 
     dispatch({
       type: REGISTER_SUCCESS,
