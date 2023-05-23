@@ -38,10 +38,10 @@ class ApprovedPurchaseList extends Component {
 
   componentDidMount() {
     axios
-      .get("https://procsupport-api.onrender.com/api/pr/get/approved/all"
-        //  {
-        //   headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-        // }
+      .get("https://procsupport-api.onrender.com/api/pr/get/approved/all",
+         {
+          headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+        }
       )
       .then((response) => {
         console.log(response.data.response);

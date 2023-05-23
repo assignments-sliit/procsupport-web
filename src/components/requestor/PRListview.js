@@ -7,12 +7,14 @@ class PRListView extends Component {
     super(props);
     this.state = {
       List: [],
+      Approved: [],
+      Rejected: [],
       MasterChecked: false,
       SelectedList: [],
       prs: [],
     };
   }
-  componentDidMount() {
+  getNewPRs() {
     axios
     .get("https://procsupport-api.onrender.com/api/pr/get/all", {
       headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
@@ -21,6 +23,38 @@ class PRListView extends Component {
       console.log(response.data.response);
       this.setState({
         List: response.data.purchase_requests
+      });
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  }
+
+  getApprovedPRs() {
+    axios
+    .get("https://procsupport-api.onrender.com/api/pr/get/approved/all", {
+      headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+    })
+    .then((response) => {
+      console.log(response.data.response);
+      this.setState({
+        Approved: response.data.purchase_requests
+      });
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  }
+
+  getRejectedPRs() {
+    axios
+    .get("https://procsupport-api.onrender.com/api/pr/get/declined/all", {
+      headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+    })
+    .then((response) => {
+      console.log(response.data.response);
+      this.setState({
+        Rejected: response.data.purchase_requests
       });
     })
     .catch(function (error) {
@@ -55,20 +89,11 @@ class PRListView extends Component {
                     </tr>
                   </thead>
                   <tbody>
-                    {this.state.List.map((requestor) => (
+                    {this.state.Approved.map((requestor) => (
                       <tr
                         key={requestor.id}
                         className={requestor.selected ? "selected" : ""}
                       >
-                        {/* <th scope="row">
-                          <input
-                            type="checkbox"
-                            checked={requestor.selected}
-                            className="form-check-input"
-                            id="rowcheck{user.id}"
-                            onChange={(e) => this.onItemCheck(e, requestor)}
-                          />
-                        </th> */}
                         <td>{requestor.prid}</td>
                         <td>{requestor.prName}</td>
                         <td>{requestor.description}</td>

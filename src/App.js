@@ -23,6 +23,7 @@ import CreateNewDelivery from "./components/receiver/CreateNewDelivery";
 import AdminHomePage from "./components/admin/AdminHomePage";
 import SupplierList from "./components/admin/SupplierList";
 import AddNewSupplier from "./components/admin/AddNewSupplier";
+import AddNewPRNew from "./components/requestor/AddNewPRNew"
 
 import store from "./store";
 
@@ -78,6 +79,7 @@ const App = () => {
           <Route exact path="/viewSupplierList" element={<SupplierList />} />
           <Route exact path="/addNewSupplier" element={<AddNewSupplier />} />
         </Routes>
+
 
         <Footer />
       </Router>
