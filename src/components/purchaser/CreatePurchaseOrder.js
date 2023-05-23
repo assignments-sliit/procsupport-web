@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import withRouter from "../../HOC/withRouter";
 
 class CreatePurchaseOrder extends Component {
   constructor(props) {
     super(props);
     this.state = {
       pr: null,
-      po: null
     };
 
     this.createPO = this.createPO.bind(this);
@@ -18,8 +18,9 @@ class CreatePurchaseOrder extends Component {
   }
 
   async getPRRecord(priId) {
+    console.log(priId)
     const response = await axios.get(
-      `http://localhost:5000/api/pr/get/pr/${priId}`
+      `https://procsupport-api.onrender.com/api/pr/get/pr/${priId}`
     );
 
     if (response.status === 200) {
@@ -31,7 +32,7 @@ class CreatePurchaseOrder extends Component {
 
   createPO() {
     axios
-      .put(" http://localhost:5000/api/po/create", {
+      .put("https://procsupport-api.onrender.com/api/po/create", {
         token: localStorage.getItem("token"),
         poid: this.state.po?.poid,
       })
@@ -175,4 +176,4 @@ class CreatePurchaseOrder extends Component {
   }
 }
 
-export default CreatePurchaseOrder;
+export default withRouter(CreatePurchaseOrder);

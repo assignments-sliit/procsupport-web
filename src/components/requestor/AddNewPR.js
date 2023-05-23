@@ -9,8 +9,9 @@ class AddNewPR extends Component {
     this.state = {
       pr: null,
       materials: [],
-      materialType: '',
-      materialTypeId: ''
+      name: '',
+      id: '',
+      selectOptions: []
     };
 
     this.addPR = this.addPR.bind(this);
@@ -31,21 +32,21 @@ class AddNewPR extends Component {
   }
 
 
-  getMateralType() {
-    axios
-      .get("https://procsupport-api.onrender.com/api/mt/get/all", {
-        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-      })
-      .then((response) => {
-        console.log(response.data.response);
-        this.setState({
-          materials: response.data.data
-        });
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  }
+  // getMateralType() {
+  //   axios
+  //     .get("https://procsupport-api.onrender.com/api/mt/get/all", {
+  //       headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+  //     })
+  //     .then((response) => {
+  //       console.log(response.data.response);
+  //       this.setState({
+  //         materials: response.data.data
+  //       });
+  //     })
+  //     .catch(function (error) {
+  //       console.log(error);
+  //     });
+  // }
 
   async getOptions() {
     const res = await axios.get('https://procsupport-api.onrender.com/api/mt/get/all', {
@@ -54,12 +55,14 @@ class AddNewPR extends Component {
     const data = res.data
 
     const options = data.map(d => ({
-      "id": d.materialTypeId,
-      "value": d.materialType
+      "materialType": d.name,
+      "materialTypeId": d.id
     }))
-      .catch(function (error) {
-        console.log(error);
-      });
+
+    this.setState({selectOptions: options})
+      // .catch(function (error) {
+      //   console.log(error);
+      // });
   }
 
   componentDidMount() {
@@ -67,6 +70,7 @@ class AddNewPR extends Component {
   }
 
   render() {
+    console.log(this.state.selectOptions)
     const { showing, setDisable, disable, setInputValue } = this.state;
     return (
       <div className="addNewPR">
@@ -133,6 +137,7 @@ class AddNewPR extends Component {
                       <option selected>Choose...</option>
                       <option>{materials.materialType}</option>
                     </select>))} */}
+                    
                     <select className="form-control" options={this.state.selectOptions} />
                   </div>
                   <br />
@@ -155,7 +160,7 @@ class AddNewPR extends Component {
                     onClick={this.addPR}
                     className="btn btn-md btn-success float-right"
                   >
-                    Approve purchase request
+                    Create purchase request
                   </button>
             </div>
           </div>

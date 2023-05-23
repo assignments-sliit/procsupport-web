@@ -21,6 +21,7 @@ import ReceiverListView from "./components/receiver/ViewDeliveryList";
 //import ViewSelectedDelivery from "./components/receiver/ViewSelectedDelivery";
 import CreateNewDelivery from "./components/receiver/CreateNewDelivery";
 import AdminHomePage from "./components/admin/AdminHomePage";
+import AddNewPRNew from "./components/requestor/AddNewPRNew"
 
 import store from "./store";
 
@@ -75,6 +76,7 @@ const App = () => {
 
           <Route exact path="/createDelivery" element={<CreateNewDelivery />} />
         </Routes>
+
 
         <Footer />
       </Router>
