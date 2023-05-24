@@ -1,5 +1,5 @@
 import api from "../utils/Api";
-import { setAlert } from "./Alert";
+//import { setAlert } from "./Alert";
 import { SUPPLIER_ERROR, ADD_SUPPLIER } from "./types";
 
 // Add supplier
@@ -13,8 +13,6 @@ export const addSupplier = (formData) => async (dispatch) => {
       type: ADD_SUPPLIER,
       payload: res.data,
     });
-
-    //dispatch(setAlert("Supplier Added", "success"));
   } catch (err) {
     dispatch({
       type: SUPPLIER_ERROR,
