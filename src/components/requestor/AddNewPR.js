@@ -18,14 +18,18 @@ class AddNewPR extends Component {
   }
 
   addPR() {
-    axios
-      .put("https://procsupport-api.onrender.com/api/pr/create", {
-        token: localStorage.getItem("token"),
-        prid: this.state.pr?.prid,
-      })
+    const authToken = `${localStorage.getItem("token")}`;
+    const payload = { "prName": this.state.pr?.prName, "description": this.state.pr?.description, "amount": this.state.pr?.amount };
+    const apiUrl = `https://procsupport-api.onrender.com/api/pr/create`
+
+    axios.post(apiUrl, payload, {
+      headers: {
+        Authorization: `Bearer ${authToken}`
+      }
+    })
       .then((response) => {
         if (response.status === 200) {
-          this.props.navigate("/viewApproverList");
+          this.props.navigate("/PRListView");
         }
       })
       .catch((error) => { });
@@ -59,10 +63,10 @@ class AddNewPR extends Component {
       "materialTypeId": d.id
     }))
 
-    this.setState({selectOptions: options})
-      // .catch(function (error) {
-      //   console.log(error);
-      // });
+    this.setState({ selectOptions: options })
+    // .catch(function (error) {
+    //   console.log(error);
+    // });
   }
 
   componentDidMount() {
@@ -157,11 +161,11 @@ class AddNewPR extends Component {
               </form>
               <br />
               <button
-                    onClick={this.addPR}
-                    className="btn btn-md btn-success float-right"
-                  >
-                    Create purchase request
-                  </button>
+                onClick={this.addPR}
+                className="btn btn-md btn-success float-right"
+              >
+                Create purchase request
+              </button>
             </div>
           </div>
         </div>
