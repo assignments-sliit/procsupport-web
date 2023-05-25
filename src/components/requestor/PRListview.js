@@ -14,7 +14,8 @@ class PRListView extends Component {
       prs: [],
     };
   }
-  getNewPRs() {
+
+  componentDidMount() {
     axios
     .get("https://procsupport-api.onrender.com/api/pr/get/all", {
       headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
@@ -30,37 +31,37 @@ class PRListView extends Component {
     });
   }
 
-  getApprovedPRs() {
-    axios
-    .get("https://procsupport-api.onrender.com/api/pr/get/approved/all", {
-      headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-    })
-    .then((response) => {
-      console.log(response.data.response);
-      this.setState({
-        Approved: response.data.purchase_requests
-      });
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
-  }
+  // getApprovedPRs() {
+  //   axios
+  //   .get("https://procsupport-api.onrender.com/api/pr/get/approved/all", {
+  //     headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+  //   })
+  //   .then((response) => {
+  //     console.log(response.data.response);
+  //     this.setState({
+  //       Approved: response.data.purchase_requests
+  //     });
+  //   })
+  //   .catch(function (error) {
+  //     console.log(error);
+  //   });
+  // }
 
-  getRejectedPRs() {
-    axios
-    .get("https://procsupport-api.onrender.com/api/pr/get/declined/all", {
-      headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-    })
-    .then((response) => {
-      console.log(response.data.response);
-      this.setState({
-        Rejected: response.data.purchase_requests
-      });
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
-  }
+  // getRejectedPRs() {
+  //   axios
+  //   .get("https://procsupport-api.onrender.com/api/pr/get/declined/all", {
+  //     headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+  //   })
+  //   .then((response) => {
+  //     console.log(response.data.response);
+  //     this.setState({
+  //       Rejected: response.data.purchase_requests
+  //     });
+  //   })
+  //   .catch(function (error) {
+  //     console.log(error);
+  //   });
+  // }
 
   render() {
     return (
@@ -89,7 +90,7 @@ class PRListView extends Component {
                     </tr>
                   </thead>
                   <tbody>
-                    {this.state.Approved.map((requestor) => (
+                    {this.state.List.map((requestor) => (
                       <tr
                         key={requestor.id}
                         className={requestor.selected ? "selected" : ""}

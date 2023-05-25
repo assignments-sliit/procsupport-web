@@ -123,11 +123,11 @@ class AddNewPR extends Component {
                 </div>
                 <hr />
 
-                <h3>Materials details</h3>
+                {/* <h3>Materials details</h3>
                 <div class="row">
                   <div class="col-6 col-sm-3">Materal Type</div>
                   <div class="col-6 col-sm-3">
-                    {/* {this.state.materials.map((materials) => (
+                    {this.state.materials.map((materials) => (
                   <select
                       id="material"
                       className="form-control"
@@ -136,7 +136,7 @@ class AddNewPR extends Component {
                     >
                       <option selected>Choose...</option>
                       <option>{materials.materialType}</option>
-                    </select>))} */}
+                    </select>))}
                     
                     <select className="form-control" options={this.state.selectOptions} />
                   </div>
@@ -152,7 +152,7 @@ class AddNewPR extends Component {
                       required
                     />
                   </div>
-                </div>
+                </div> */}
 
               </form>
               <br />
