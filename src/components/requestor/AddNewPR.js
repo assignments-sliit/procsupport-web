@@ -19,7 +19,7 @@ class AddNewPR extends Component {
 
   addPR() {
     const authToken = `${localStorage.getItem("token")}`;
-    const payload = { "prName": this.state.pr?.prName, "description": this.state.pr?.description, "amount": this.state.pr?.amount };
+    const payload = { "prName": this.state.pr?.prName, "description": this.state.pr?.description, "amount": this.state.pr?.amount};
     const apiUrl = `https://procsupport-api.onrender.com/api/pr/create`
 
     axios.post(apiUrl, payload, {
