@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 
 import { setAlert } from "../../actions/Alert";
 import { addSupplier } from "../../actions/Suppliers";
 
 const AddNewSupplier = ({ setAlert, addSupplier, isAuthenticated }) => {
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     supplierName: "",
     supplierUsername: "",
@@ -50,10 +52,7 @@ const AddNewSupplier = ({ setAlert, addSupplier, isAuthenticated }) => {
         supplierUserPassword,
         supplierUserPassword_2,
       });
-    }
-
-    if (isAuthenticated) {
-      return <Navigate to="/viewSupplierList" />;
+      navigate("/adminHomePage");
     }
   };
 

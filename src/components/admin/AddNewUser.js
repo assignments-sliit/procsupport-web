@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { Link, Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 
 import { setAlert } from "../../actions/Alert";
 import { addUser } from "../../actions/Auth";
 
 const AddNewUser = ({ setAlert, addUser, isAuthenticated }) => {
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     name: "",
     username: "",
@@ -38,10 +40,7 @@ const AddNewUser = ({ setAlert, addUser, isAuthenticated }) => {
         usertype,
         password,
       });
-    }
-
-    if (isAuthenticated) {
-      return <Navigate to="/" />;
+      navigate("/adminHomePage");
     }
   };
 
