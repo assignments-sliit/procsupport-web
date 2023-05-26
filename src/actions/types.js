@@ -33,6 +33,12 @@ export const SUPPLIER_ERROR = "SUPPLIER_ERROR";
 export const DELETE_SUPPLIER = "DELETE_SUPPLIER";
 export const ADD_SUPPLIER = "ADD_SUPPLIER";
 
+export const ADD_COMMENT = "ADD_COMMENT";
+export const REMOVE_COMMENT = "REMOVE_COMMENT";
+export const PR_ERROR = "PR_ERROR";
+export const ADD_PR = "ADD_PR";
+
+
 // Materials related commands
 export const ADD_MATERIAL_TYPE = "ADD_MATERIAL_TYPE";
 export const DELETE_MATERIAL_TYPE = "DELETE_MATERIAL_TYPE";
@@ -40,3 +46,4 @@ export const GET_MATERIAL_TYPE = "GET_MATERIAL_TYPE";
 export const ADD_MATERIAL_ITEM = "ADD_MATERIAL_ITEM";
 export const DELETE_MATERIAL_ITEM = "DELETE_MATERIAL_ITEM";
 export const GET_MATERIAL_ITEM = "GET_MATERIAL_ITEM";
+
