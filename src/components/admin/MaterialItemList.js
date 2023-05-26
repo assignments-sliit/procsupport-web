@@ -69,10 +69,13 @@ class MaterialItemList extends Component {
                         className={mList.selected ? "selected" : ""}
                       >
                         <td>{mList.materialName}</td>
-                        <td>{mList.materialTypeId}</td>{" "}
-                        {/** Need to change this data */}
-                        <td>{mList.unitPrice}</td>
-                        <td style={{ textAlign: "center" }}>{mList.uom}</td>
+                        <td>{mList.materialType}</td>{" "}
+                        <td style={{ textAlign: "center" }}>
+                          {mList.unitPrice}
+                        </td>
+                        <td style={{ textAlign: "center" }}>
+                          {mList.availableQty}
+                        </td>
                       </tr>
                     ))}
                   </tbody>
