@@ -7,11 +7,14 @@ class PRListView extends Component {
     super(props);
     this.state = {
       List: [],
+      Approved: [],
+      Rejected: [],
       MasterChecked: false,
       SelectedList: [],
       prs: [],
     };
   }
+
   componentDidMount() {
     axios
     .get("https://procsupport-api.onrender.com/api/pr/get/all", {
@@ -27,6 +30,38 @@ class PRListView extends Component {
       console.log(error);
     });
   }
+
+  // getApprovedPRs() {
+  //   axios
+  //   .get("https://procsupport-api.onrender.com/api/pr/get/approved/all", {
+  //     headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+  //   })
+  //   .then((response) => {
+  //     console.log(response.data.response);
+  //     this.setState({
+  //       Approved: response.data.purchase_requests
+  //     });
+  //   })
+  //   .catch(function (error) {
+  //     console.log(error);
+  //   });
+  // }
+
+  // getRejectedPRs() {
+  //   axios
+  //   .get("https://procsupport-api.onrender.com/api/pr/get/declined/all", {
+  //     headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+  //   })
+  //   .then((response) => {
+  //     console.log(response.data.response);
+  //     this.setState({
+  //       Rejected: response.data.purchase_requests
+  //     });
+  //   })
+  //   .catch(function (error) {
+  //     console.log(error);
+  //   });
+  // }
 
   render() {
     return (
@@ -60,15 +95,6 @@ class PRListView extends Component {
                         key={requestor.id}
                         className={requestor.selected ? "selected" : ""}
                       >
-                        {/* <th scope="row">
-                          <input
-                            type="checkbox"
-                            checked={requestor.selected}
-                            className="form-check-input"
-                            id="rowcheck{user.id}"
-                            onChange={(e) => this.onItemCheck(e, requestor)}
-                          />
-                        </th> */}
                         <td>{requestor.prid}</td>
                         <td>{requestor.prName}</td>
                         <td>{requestor.description}</td>

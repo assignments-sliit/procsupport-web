@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import withRouter from "../../HOC/withRouter";
 import axios from "axios";
 
-//var DatePicker = require("react-bootstrap-date-picker");
 
 class ViewSelectedPRRecord extends Component {
   constructor(props) {
@@ -13,6 +12,7 @@ class ViewSelectedPRRecord extends Component {
     };
 
     this.approvePR = this.approvePR.bind(this);
+    this.rejectPR = this.rejectPR.bind(this);
   }
 
   componentDidMount() {
@@ -20,8 +20,9 @@ class ViewSelectedPRRecord extends Component {
   }
 
   async getPRRecord(priId) {
+    console.log(priId)
     const response = await axios.get(
-      `http://localhost:5000/api/pr/get/pr/${priId}`
+      `https://procsupport-api.onrender.com/api/pr/get/pr/${priId}`
     );
 
     if (response.status === 200) {
@@ -31,33 +32,79 @@ class ViewSelectedPRRecord extends Component {
     }
   }
 
+
+
+  // approvePR() {
+  //   axios
+  //     .put("https://procsupport-api.onrender.com/api/pr/auth/status/approve", {
+  //       headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+  //       payload : {prid: this.state.pr?.prid},
+  //     })
+  //     .then((response) => {
+  //       if (response.status === 200) {
+  //         this.props.navigate("/viewApproverList");
+  //       }
+  //     })
+  //     .catch(function (error) {
+  //       console.log(error);
+  //     });
+  // }
+
   approvePR() {
-    axios
-      .put("http://localhost:5000/api/pr/auth/status/approve", {
-        token: localStorage.getItem("token"),
-        prid: this.state.pr?.prid,
-      })
-      .then((response) => {
-        if (response.status === 200) {
-          this.props.navigate("/viewApproverList");
-        }
-      })
-      .catch((error) => {});
+    const authToken = `${localStorage.getItem("token")}`;
+    const payload = { "prid": this.state.pr?.prid };
+    const apiUrl = `https://procsupport-api.onrender.com/api/pr/auth/status/approve`
+
+    axios.put(apiUrl, payload, {
+      headers: {
+        Authorization: `Bearer ${authToken}`
+      }
+    })
+    .then((response) => {
+      if (response.status === 200) {
+        this.props.navigate("/viewApproverList");
+      }
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
   }
 
+
   rejectPR() {
-    axios
-      .put("http://localhost:5000/api/pr/auth/status/decline", {
-        token: localStorage.getItem("token"),
-        prid: this.state.pr?.prid,
-      })
-      .then((response) => {
-        if (response.status === 200) {
-          this.props.navigate("/viewApproverList");
-        }
-      })
-      .catch((error) => {});
+    const authToken = `${localStorage.getItem("token")}`;
+    const payload = { "prid": this.state.pr?.prid };
+    const apiUrl = `https://procsupport-api.onrender.com/api/pr/auth/status/decline`
+
+    axios.put(apiUrl, payload, {
+      headers: {
+        Authorization: `Bearer ${authToken}`
+      }
+    })
+    .then((response) => {
+      if (response.status === 200) {
+        this.props.navigate("/viewApproverList");
+      }
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
   }
+  // rejectPR() {
+  //   axios
+  //     .put("https://procsupport-api.onrender.com/api/pr/auth/status/decline", {
+  //       headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+  //       prid: this.state.pr?.prid,
+  //     })
+  //     .then((response) => {
+  //       if (response.status === 200) {
+  //         this.props.navigate("/viewApproverList");
+  //       }
+  //     })
+  //     .catch(function (error) {
+  //       console.log(error);
+  //     });
+  // }
 
   render() {
     return (
@@ -69,10 +116,7 @@ class ViewSelectedPRRecord extends Component {
               <hr />
               {this.state.pr?.status === "NEW" && (
                 <>
-                  <button
-                    onClick={this.approvePR}
-                    className="btn btn-md btn-success float-left"
-                  >
+                  <button onClick={this.approvePR} className="btn btn-md btn-success float-left">
                     Approve purchase request
                   </button>
 
@@ -87,7 +131,7 @@ class ViewSelectedPRRecord extends Component {
               >
                 View all purchase requests
               </Link>
-              <hr/>
+              <hr />
               <form>
                 <div className="form-row">
                   <div className="form-group col-md-3">
@@ -199,7 +243,7 @@ class ViewSelectedPRRecord extends Component {
               </form>
 
               <br />
-              
+
             </div>
           </div>
         </div>

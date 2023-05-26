@@ -18,7 +18,6 @@ import AddNewPR from "./components/requestor/AddNewPR";
 import ApproverListView from "./components/approver/ApproverListView";
 import ViewSelectedPRRecord from "./components/approver/ViewSelectedPRRecord";
 import ReceiverListView from "./components/receiver/ViewDeliveryList";
-//import ViewSelectedDelivery from "./components/receiver/ViewSelectedDelivery";
 import CreateNewDelivery from "./components/receiver/CreateNewDelivery";
 import AdminHomePage from "./components/admin/AdminHomePage";
 import SupplierList from "./components/admin/SupplierList";
@@ -63,7 +62,7 @@ const App = () => {
 
           <Route
             exact
-            path="/createPurchaseOrder"
+            path="/createPurchaseOrder/:id"
             element={<CreatePurchaseOrder />}
           />
 
