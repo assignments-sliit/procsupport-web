@@ -2,11 +2,11 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-class UsersList extends Component {
+class MaterialItemList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      List: [],
+      MaterialList: [],
       MasterChecked: false,
       SelectedList: [],
       prs: [],
@@ -29,12 +29,12 @@ class UsersList extends Component {
 
   componentDidMount() {
     axios
-      .get("https://procsupport-api.onrender.com/api/users/admin/get/all", {
+      .get("https://procsupport-api.onrender.com/api/material/auth/get/all", {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       })
       .then((response) => {
         this.setState({
-          List: response.data.users,
+          MaterialList: response.data.data,
         });
       })
       .catch(function (error) {
@@ -44,34 +44,35 @@ class UsersList extends Component {
 
   render() {
     return (
-      <div className="viewUserList">
+      <div className="viewMatrialItemList">
         <div className="container">
           <div className="row">
             <div className="col-md-128 m-auto">
               <br />
-              <h2>All Users</h2>
+              <h2>All Available Materials</h2>
 
               <br />
               <div className="table-responsive-lg">
-                <table className="table" style={{ width: "950px" }}>
-                  <thead>
-                    <tr class="table-success">
-                      <th scope="col">Employee Name</th>
-                      <th scope="col">Username</th>
-                      <th scope="col">User Type</th>
-                      <th scope="col">User Status</th>
+                <table className="table" style={{ width: "100%" }}>
+                  <thead style={{ textAlign: "center" }}>
+                    <tr className="table-success">
+                      <th scope="col">Material Name</th>
+                      <th scope="col">Material Type</th>
+                      <th scope="col">Unit Price</th>
+                      <th scope="col">Available Quantity</th>
                     </tr>
                   </thead>
                   <tbody>
-                    {this.state.List.map((user) => (
+                    {this.state.MaterialList.map((mList) => (
                       <tr
-                        key={user.id}
-                        className={user.selected ? "selected" : ""}
+                        key={mList.id}
+                        className={mList.selected ? "selected" : ""}
                       >
-                        <td>{user.name}</td>
-                        <td>{user.username}</td>
-                        <td>{user.usertype}</td>
-                        <td>{user.userstatus}</td>
+                        <td>{mList.materialName}</td>
+                        <td>{mList.materialTypeId}</td>{" "}
+                        {/** Need to change this data */}
+                        <td>{mList.unitPrice}</td>
+                        <td style={{ textAlign: "center" }}>{mList.uom}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -79,10 +80,10 @@ class UsersList extends Component {
               </div>
               <br />
               <Link
-                to="/addNewUser"
+                to="/addMaterialItem"
                 className="btn btn-lg btn-primary float-right"
               >
-                <i className="fa-duotone fa-plus"></i> Add New User
+                <i className="fa-duotone fa-plus"></i> Add New Material
               </Link>
             </div>
           </div>
@@ -92,4 +93,4 @@ class UsersList extends Component {
   }
 }
 
-export default UsersList;
+export default MaterialItemList;

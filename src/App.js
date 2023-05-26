@@ -23,6 +23,10 @@ import CreateNewDelivery from "./components/receiver/CreateNewDelivery";
 import AdminHomePage from "./components/admin/AdminHomePage";
 import SupplierList from "./components/admin/SupplierList";
 import AddNewSupplier from "./components/admin/AddNewSupplier";
+import AddMaterialType from "./components/admin/AddMaterialType";
+import MaterialList from "./components/admin/MatrialList";
+import MaterialItemList from "./components/admin/MaterialItemList";
+import AddMaterialItem from "./components/admin/AddMaterialItem";
 
 import store from "./store";
 
@@ -77,6 +81,14 @@ const App = () => {
           <Route exact path="/addNewUser" element={<AddNewUser />} />
           <Route exact path="/viewSupplierList" element={<SupplierList />} />
           <Route exact path="/addNewSupplier" element={<AddNewSupplier />} />
+          <Route exact path="/addMaterialType" element={<AddMaterialType />} />
+          <Route exact path="/viewMatrialList" element={<MaterialList />} />
+          <Route exact path="/addMaterialItem" element={<AddMaterialItem />} />
+          <Route
+            exact
+            path="/viewMatrialItemList"
+            element={<MaterialItemList />}
+          />
         </Routes>
 
         <Footer />

@@ -29,12 +29,12 @@ class MaterialList extends Component {
 
   componentDidMount() {
     axios
-      .get("https://procsupport-api.onrender.com/api/suppliers/get/all", {
+      .get("https://procsupport-api.onrender.com/api/mt/get/all", {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       })
       .then((response) => {
         this.setState({
-          List: response.data.records,
+          List: response.data.data,
         });
       })
       .catch(function (error) {
@@ -44,34 +44,30 @@ class MaterialList extends Component {
 
   render() {
     return (
-      <div className="viewSupplierList">
+      <div className="viewMatrialList">
         <div className="container">
           <div className="row">
             <div className="col-md-128 m-auto">
               <br />
-              <h2>All Suppliers</h2>
+              <h2>All Material Types</h2>
 
               <br />
               <div className="table-responsive-lg">
                 <table className="table" style={{ width: "100%" }}>
                   <thead style={{ textAlign: "center" }}>
                     <tr className="table-success">
-                      <th scope="col">Supplier Name</th>
-                      <th scope="col">Username</th>
-                      <th scope="col">Main Supply</th>
-                      <th scope="col">Address</th>
+                      <th scope="col">Material Type</th>
+                      <th scope="col">Unit of Measurement</th>
                     </tr>
                   </thead>
                   <tbody>
-                    {this.state.List.map((supplier) => (
+                    {this.state.List.map((mType) => (
                       <tr
-                        key={supplier.id}
-                        className={supplier.selected ? "selected" : ""}
+                        key={mType.id}
+                        className={mType.selected ? "selected" : ""}
                       >
-                        <td>{supplier.supplierName}</td>
-                        <td>{supplier.supplierUsername}</td>
-                        <td>{supplier.mainSupply}</td>
-                        <td>{supplier.address}</td>
+                        <td>{mType.materialType}</td>
+                        <td style={{ textAlign: "center" }}>{mType.uom}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -79,10 +75,10 @@ class MaterialList extends Component {
               </div>
               <br />
               <Link
-                to="/addNewSupplier"
+                to="/addMaterialType"
                 className="btn btn-lg btn-primary float-right"
               >
-                <i className="fa-duotone fa-plus"></i> Add New Supplier
+                <i className="fa-duotone fa-plus"></i> Add New Material Type
               </Link>
             </div>
           </div>
