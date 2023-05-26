@@ -18,14 +18,18 @@ class AddNewPR extends Component {
   }
 
   addPR() {
-    axios
-      .put("https://procsupport-api.onrender.com/api/pr/create", {
-        token: localStorage.getItem("token"),
-        prid: this.state.pr?.prid,
-      })
+    const authToken = `${localStorage.getItem("token")}`;
+    const payload = { "prName": this.state.pr?.prName, "description": this.state.pr?.description, "amount": this.state.pr?.amount};
+    const apiUrl = `https://procsupport-api.onrender.com/api/pr/create`
+
+    axios.post(apiUrl, payload, {
+      headers: {
+        Authorization: `Bearer ${authToken}`
+      }
+    })
       .then((response) => {
         if (response.status === 200) {
-          this.props.navigate("/viewApproverList");
+          this.props.navigate("/PRListView");
         }
       })
       .catch((error) => { });
@@ -59,10 +63,10 @@ class AddNewPR extends Component {
       "materialTypeId": d.id
     }))
 
-    this.setState({selectOptions: options})
-      // .catch(function (error) {
-      //   console.log(error);
-      // });
+    this.setState({ selectOptions: options })
+    // .catch(function (error) {
+    //   console.log(error);
+    // });
   }
 
   componentDidMount() {
@@ -123,11 +127,11 @@ class AddNewPR extends Component {
                 </div>
                 <hr />
 
-                <h3>Materials details</h3>
+                {/* <h3>Materials details</h3>
                 <div class="row">
                   <div class="col-6 col-sm-3">Materal Type</div>
                   <div class="col-6 col-sm-3">
-                    {/* {this.state.materials.map((materials) => (
+                    {this.state.materials.map((materials) => (
                   <select
                       id="material"
                       className="form-control"
@@ -136,7 +140,7 @@ class AddNewPR extends Component {
                     >
                       <option selected>Choose...</option>
                       <option>{materials.materialType}</option>
-                    </select>))} */}
+                    </select>))}
                     
                     <select className="form-control" options={this.state.selectOptions} />
                   </div>
@@ -152,16 +156,16 @@ class AddNewPR extends Component {
                       required
                     />
                   </div>
-                </div>
+                </div> */}
 
               </form>
               <br />
               <button
-                    onClick={this.addPR}
-                    className="btn btn-md btn-success float-right"
-                  >
-                    Create purchase request
-                  </button>
+                onClick={this.addPR}
+                className="btn btn-md btn-success float-right"
+              >
+                Create purchase request
+              </button>
             </div>
           </div>
         </div>
