@@ -66,6 +66,7 @@ const AddNewUser = ({ setAlert, addUser, isAuthenticated }) => {
                   name="name"
                   value={name}
                   onChange={onChange}
+                  required
                 />
               </div>
               <div className="form-group">
@@ -75,6 +76,7 @@ const AddNewUser = ({ setAlert, addUser, isAuthenticated }) => {
                   name="username"
                   value={username}
                   onChange={onChange}
+                  required
                 />
               </div>
               <div className="form-group">
@@ -84,6 +86,7 @@ const AddNewUser = ({ setAlert, addUser, isAuthenticated }) => {
                   name="userstatus"
                   value={userstatus}
                   onChange={onChange}
+                  required
                 />
               </div>
               <div className="form-group">
@@ -93,6 +96,7 @@ const AddNewUser = ({ setAlert, addUser, isAuthenticated }) => {
                   name="usertype"
                   value={usertype}
                   onChange={onChange}
+                  required
                 />
               </div>
               <div className="form-group">
@@ -102,6 +106,7 @@ const AddNewUser = ({ setAlert, addUser, isAuthenticated }) => {
                   name="password"
                   value={password}
                   onChange={onChange}
+                  required
                 />
               </div>
               <div className="form-group">
@@ -111,6 +116,7 @@ const AddNewUser = ({ setAlert, addUser, isAuthenticated }) => {
                   name="password2"
                   value={password2}
                   onChange={onChange}
+                  required
                 />
               </div>
               <input

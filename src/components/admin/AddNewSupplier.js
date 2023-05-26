@@ -52,6 +52,7 @@ const AddNewSupplier = ({ setAlert, addSupplier, isAuthenticated }) => {
         supplierUserPassword,
         supplierUserPassword_2,
       });
+      setAlert("Supplier added successfully", "success");
       navigate("/adminHomePage");
     }
   };
@@ -79,6 +80,7 @@ const AddNewSupplier = ({ setAlert, addSupplier, isAuthenticated }) => {
                   name="supplierName"
                   value={supplierName}
                   onChange={onChange}
+                  required
                 />
               </div>
               <div className="form-group">
@@ -88,6 +90,7 @@ const AddNewSupplier = ({ setAlert, addSupplier, isAuthenticated }) => {
                   name="supplierUsername"
                   value={supplierUsername}
                   onChange={onChange}
+                  required
                 />
               </div>
               <div className="form-group">
@@ -97,6 +100,7 @@ const AddNewSupplier = ({ setAlert, addSupplier, isAuthenticated }) => {
                   name="mainSupply"
                   value={mainSupply}
                   onChange={onChange}
+                  required
                 />
               </div>
               <div className="form-group">
@@ -106,6 +110,7 @@ const AddNewSupplier = ({ setAlert, addSupplier, isAuthenticated }) => {
                   name="supplierUserPassword"
                   value={supplierUserPassword}
                   onChange={onChange}
+                  required
                 />
               </div>
               <div className="form-group">
@@ -115,6 +120,7 @@ const AddNewSupplier = ({ setAlert, addSupplier, isAuthenticated }) => {
                   name="supplierUserPassword_2"
                   value={supplierUserPassword_2}
                   onChange={onChange}
+                  required
                 />
               </div>
               <hr />
@@ -126,6 +132,7 @@ const AddNewSupplier = ({ setAlert, addSupplier, isAuthenticated }) => {
                   name="contactPersonName"
                   value={contactPersonName}
                   onChange={onChange}
+                  required
                 />
               </div>
               <div className="form-group">
@@ -135,6 +142,7 @@ const AddNewSupplier = ({ setAlert, addSupplier, isAuthenticated }) => {
                   name="address"
                   value={address}
                   onChange={onChange}
+                  required
                 />
               </div>
               <div className="form-group">
@@ -144,6 +152,7 @@ const AddNewSupplier = ({ setAlert, addSupplier, isAuthenticated }) => {
                   name="contactNumber"
                   value={contactNumber}
                   onChange={onChange}
+                  required
                 />
               </div>
               <input
