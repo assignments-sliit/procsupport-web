@@ -23,3 +23,5 @@ export const DELETE_SUPPLIER = "DELETE_SUPPLIER";
 export const ADD_SUPPLIER = "ADD_SUPPLIER";
 export const ADD_COMMENT = "ADD_COMMENT";
 export const REMOVE_COMMENT = "REMOVE_COMMENT";
+export const PR_ERROR = "PR_ERROR";
+export const ADD_PR = "ADD_PR";
