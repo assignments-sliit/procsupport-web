@@ -37,13 +37,15 @@ class ApproverListView extends Component {
 
   componentDidMount() {
     axios
-      .get("https://procsupport-api.onrender.com/api/pr/get/all", {
-        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-      })
+      .get("https://procsupport-api.onrender.com/api/pr/get/new/all"
+      //  {
+      //   headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+      // }
+      )
       .then((response) => {
         console.log(response.data.response);
         this.setState({
-          List: response.data.purchase_requests
+          List: response.data.data
         });
       })
       .catch(function (error) {
