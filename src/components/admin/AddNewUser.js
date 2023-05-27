@@ -4,9 +4,9 @@ import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 
 import { setAlert } from "../../actions/Alert";
-import { addUser } from "../../actions/Auth";
+import { addUser, getUsers } from "../../actions/Auth";
 
-const AddNewUser = ({ setAlert, addUser, isAuthenticated }) => {
+const AddNewUser = ({ setAlert, addUser, getUsers, isAuthenticated }) => {
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
@@ -33,14 +33,18 @@ const AddNewUser = ({ setAlert, addUser, isAuthenticated }) => {
     if (password !== password2) {
       setAlert("Passwords do not match", "danger");
     } else {
-      addUser({
+      const newUser = {
         name,
         username,
         userstatus,
         usertype,
         password,
+      };
+
+      addUser(newUser).then(() => {
+        getUsers();
+        navigate("/viewUserList");
       });
-      navigate("/adminHomePage");
     }
   };
 
@@ -135,6 +139,7 @@ const AddNewUser = ({ setAlert, addUser, isAuthenticated }) => {
 AddNewUser.propTypes = {
   setAlert: PropTypes.func.isRequired,
   addUser: PropTypes.func.isRequired,
+  getUsers: PropTypes.func.isRequired, //new
   isAuthenticated: PropTypes.bool,
 };
 
@@ -142,4 +147,6 @@ const mapStatetoProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
 });
 
-export default connect(mapStatetoProps, { setAlert, addUser })(AddNewUser);
+export default connect(mapStatetoProps, { setAlert, addUser, getUsers })(
+  AddNewUser
+);

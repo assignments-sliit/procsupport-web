@@ -15,11 +15,7 @@ const AddNewPR = ({ setAlert, addPR, isAuthenticated }) => {
     amount: "",
   });
 
-  const {
-    prName,
-    description,
-    amount,
-  } = formData;
+  const { prName, description, amount } = formData;
 
   const onChange = (e) =>
     setFormData({
@@ -29,12 +25,12 @@ const AddNewPR = ({ setAlert, addPR, isAuthenticated }) => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-      addPR({
-        prName,
-        description,
-        amount,
-      });
-      navigate("/viewPRList");
+    addPR({
+      prName,
+      description,
+      amount,
+    });
+    navigate("/viewPRList");
   };
 
   return (
@@ -104,6 +100,4 @@ const mapStatetoProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
 });
 
-export default connect(mapStatetoProps, { setAlert, addPR })(
-  AddNewPR
-);
+export default connect(mapStatetoProps, { setAlert, addPR })(AddNewPR);

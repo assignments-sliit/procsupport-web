@@ -17,6 +17,8 @@ export const LOGOUT = "LOGOUT";
 // User list commands
 export const GET_USER_LIST = "GET_USER_LIST";
 export const GET_USERS_LIST = "GET_USERS_LIST";
+export const GET_USERS_SUCCESS = "GET_USERS_SUCCESS";
+export const GET_USERS_FAIL = "GET_USERS_LIST";
 
 //
 export const GET_REPOS = "GET_REPOS";
