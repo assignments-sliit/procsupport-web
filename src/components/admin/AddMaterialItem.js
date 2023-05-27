@@ -5,9 +5,9 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 //import { setAlert } from "../../actions/Alert";
-import { addMaterialItem } from "../../actions/Materials";
+import { addMaterialItem, getMaterialItems } from "../../actions/Materials";
 
-const AddMaterialItem = ({ setAlert, addMaterialItem }) => {
+const AddMaterialItem = ({ setAlert, addMaterialItem, getMaterialItems }) => {
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
@@ -42,14 +42,17 @@ const AddMaterialItem = ({ setAlert, addMaterialItem }) => {
   const onSubmit = async (e) => {
     e.preventDefault();
 
-    addMaterialItem({
+    const newMaterialItem = {
       materialTypeId: selectedTypeId,
       materialName,
       unitPrice,
       availableQty,
+    };
+
+    addMaterialItem(newMaterialItem).then(() => {
+      getMaterialItems();
+      navigate("/viewMatrialItemList");
     });
-    setAlert("Material added successfully", "success");
-    navigate("/adminHomePage");
   };
 
   useEffect(() => {
@@ -62,20 +65,6 @@ const AddMaterialItem = ({ setAlert, addMaterialItem }) => {
         console.log(response.data.data);
 
         const { data } = response.data;
-        // const idObj = {};
-        // const nameObj = {};
-
-        // // Create ID and Name objects
-        // data.forEach((item) => {
-        //   idObj[item.materialTypeId] = item.materialTypeId;
-        //   nameObj[item.materialType] = item.materialType;
-        // });
-
-        // console.log("ID Object:", idObj);
-        // console.log("Name Object:", nameObj);
-
-        // Extract the item names
-
         const itemNames = data.map((item) => ({
           materialType: item.materialType,
           materialTypeId: item.materialTypeId,
@@ -162,6 +151,9 @@ const AddMaterialItem = ({ setAlert, addMaterialItem }) => {
 
 AddMaterialItem.propTypes = {
   addMaterialType: PropTypes.func.isRequired,
+  getMaterialItems: PropTypes.func.isRequired,
 };
 
-export default connect(null, { addMaterialItem })(AddMaterialItem);
+export default connect(null, { addMaterialItem, getMaterialItems })(
+  AddMaterialItem
+);

@@ -24,6 +24,22 @@ export const addMaterialType = (formData) => async (dispatch) => {
   }
 };
 
+// Get all material types
+export const getMaterialTypes = () => async (dispatch) => {
+  try {
+    const res = await api.get("/mt/get/all");
+    dispatch({
+      //type: GET_USERS_SUCCESS,
+      payload: res.data.data,
+    });
+  } catch (err) {
+    dispatch({
+      //type: GET_USERS_FAIL,
+    });
+    dispatch(setAlert("Failed to get material types", "danger"));
+  }
+};
+
 // Add material item
 export const addMaterialItem = (formData) => async (dispatch) => {
   try {
@@ -34,7 +50,7 @@ export const addMaterialItem = (formData) => async (dispatch) => {
       payload: res.data,
     });
 
-    dispatch(setAlert("Material type added", "success"));
+    dispatch(setAlert("Material items added", "success"));
   } catch (err) {
     dispatch({
       type: POST_ERROR,
@@ -43,5 +59,20 @@ export const addMaterialItem = (formData) => async (dispatch) => {
         status: err.response.status,
       },
     });
+  }
+};
+
+// Get all material items
+export const getMaterialItems = () => async (dispatch) => {
+  try {
+    const res = await api.get("/material/auth/get/all");
+    dispatch({
+      payload: res.data.data,
+    });
+  } catch (err) {
+    dispatch({
+      //type: GET_USERS_FAIL,
+    });
+    dispatch(setAlert("Failed to get material items", "danger"));
   }
 };
