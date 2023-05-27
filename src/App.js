@@ -26,6 +26,7 @@ import AddMaterialType from "./components/admin/AddMaterialType";
 import MaterialList from "./components/admin/MatrialList";
 import MaterialItemList from "./components/admin/MaterialItemList";
 import AddMaterialItem from "./components/admin/AddMaterialItem";
+import Alert from "./components/layout/Alert";
 
 import store from "./store";
 
@@ -34,6 +35,7 @@ const App = () => {
     <Provider store={store}>
       <Router>
         <Navbar />
+        <Alert />
 
         <Routes>
           <Route exact path="/" element={<Landing />} />
@@ -90,7 +92,7 @@ const App = () => {
           />
         </Routes>
 
-        <Footer />
+        {/* <Footer /> */}
       </Router>
     </Provider>
   );
