@@ -1,124 +1,9 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import MaterialList from "./MatrialList";
 import UsersListItem from "./UsersListItem";
 import SupplierListItem from "./SupplierListItem";
-
-// class AdminHomePage extends Component {
-//   render() {
-//     return (
-//       <div className="adminHomePage">
-//         <div className="dark-overlay landing-inner text-light">
-//           <div className="container">
-//             <div className="row">
-//               <div className="col-md-12 text-center">
-//                 <h1 className="display-3 mb-4">ProcSupport</h1>
-//                 <p className="lead">
-//                   <i> Welcome Admin Home Page! </i>
-//                 </p>
-//                 <hr />
-//                 <div
-//                   style={{
-//                     display: "flex",
-//                     justifyContent: "space-around",
-//                     alignItems: "center",
-//                   }}
-//                 >
-//                   <Link
-//                     to="/viewUserList"
-//                     className="btn btn-lg btn-primary"
-//                     style={{ marginRight: "-400px" }}
-//                   >
-//                     View list of users
-//                   </Link>
-//                   <Link
-//                     to="/addNewUser"
-//                     className="btn btn-lg btn-primary"
-//                     style={{ marginRight: "8px" }}
-//                   >
-//                     Add New User
-//                   </Link>
-//                 </div>
-//                 <hr />
-
-//                 <div
-//                   style={{
-//                     display: "flex",
-//                     justifyContent: "space-around",
-//                     alignItems: "center",
-//                   }}
-//                 >
-//                   <Link
-//                     to="/viewSupplierList"
-//                     className="btn btn-lg btn-primary"
-//                     style={{ marginRight: "-400px" }}
-//                   >
-//                     View list of suppliers
-//                   </Link>
-//                   <Link
-//                     to="/addNewSupplier"
-//                     className="btn btn-lg btn-primary"
-//                     style={{ marginRight: "8px" }}
-//                   >
-//                     Add New Suppliers
-//                   </Link>
-//                 </div>
-//                 <hr />
-//                 <div
-//                   style={{
-//                     display: "flex",
-//                     justifyContent: "space-around",
-//                     alignItems: "center",
-//                   }}
-//                 >
-//                   <Link
-//                     to="/viewMatrialList"
-//                     className="btn btn-lg btn-primary"
-//                     style={{ marginRight: "-400px" }}
-//                   >
-//                     View Material Types
-//                   </Link>
-//                   <Link
-//                     to="/addMaterialType"
-//                     className="btn btn-lg btn-primary"
-//                     style={{ marginRight: "-400px" }}
-//                   >
-//                     Add New Material Type
-//                   </Link>
-//                 </div>
-//                 <hr />
-//                 <div
-//                   style={{
-//                     display: "flex",
-//                     justifyContent: "space-around",
-//                     alignItems: "center",
-//                   }}
-//                 >
-//                   <Link
-//                     to="/viewMatrialItemList"
-//                     className="btn btn-lg btn-primary"
-//                     style={{ marginRight: "-400px" }}
-//                   >
-//                     View Material List
-//                   </Link>
-//                   <Link
-//                     to="/addMaterialItem"
-//                     className="btn btn-lg btn-primary"
-//                     style={{ marginRight: "-400px" }}
-//                   >
-//                     Add New Material
-//                   </Link>
-//                 </div>
-//               </div>
-//             </div>
-//           </div>
-//         </div>
-//       </div>
-//     );
-//   }
-// }
-
-// export default AdminHomePage;
+import MatrialListItem from "./MatrialListItem";
+import MaterialItemsList from "./MaterialItemsList";
 
 class AdminHomePage extends Component {
   render() {
@@ -128,7 +13,9 @@ class AdminHomePage extends Component {
           <div className="container">
             <div className="row">
               <div className="col-md-12 text-center">
-                <h3 className="display-3 mb-4">ProcSupport Admin</h3>
+                <h5 className="display-3 mb-4" style={{ color: "white" }}>
+                  ProcSupport Admin
+                </h5>
 
                 <hr />
 
@@ -175,17 +62,41 @@ class AdminHomePage extends Component {
                 <hr />
 
                 <div className="row">
-                  <div className="col-md-6">
+                  <div className="col-md-6" style={{ color: "black" }}>
                     <div className="card">
                       <div className="card-body">
-                        <h5 className="card-title">Supplier List</h5>
-                        <p className="card-text">View a list of suppliers.</p>
-                        <Link
-                          to="/viewSupplierList"
-                          className="btn btn-primary"
+                        <div className="card-header">
+                          <h4
+                            className="card-title"
+                            style={{ textAlign: "left" }}
+                          >
+                            <b>Material Types</b>
+                          </h4>
+                        </div>
+                        <div
+                          className="scrollable"
+                          style={{ maxHeight: "300px", overflowY: "auto" }}
                         >
-                          View List
-                        </Link>
+                          <br />
+                          <MatrialListItem />
+                        </div>
+                        <div
+                          className="card-footer"
+                          style={{
+                            display: "flex",
+                            justifyContent: "flex-end",
+                            alignItems: "center",
+                          }}
+                        >
+                          <Link
+                            to="/viewMatrialList"
+                            style={{
+                              color: "blue",
+                            }}
+                          >
+                            View all material types...
+                          </Link>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -193,10 +104,38 @@ class AdminHomePage extends Component {
                   <div className="col-md-6" style={{ color: "black" }}>
                     <div className="card">
                       <div className="card-body">
-                        <MaterialList />
-                        <Link to="/viewMatrialList" className="btn btn-primary">
-                          View Material Types
-                        </Link>
+                        <div className="card-header">
+                          <h4
+                            className="card-title"
+                            style={{ textAlign: "left" }}
+                          >
+                            <b>Material Items</b>
+                          </h4>
+                        </div>
+                        <div
+                          className="scrollable"
+                          style={{ maxHeight: "300px", overflowY: "auto" }}
+                        >
+                          <br />
+                          <MaterialItemsList />
+                        </div>
+                        <div
+                          className="card-footer"
+                          style={{
+                            display: "flex",
+                            justifyContent: "flex-end",
+                            alignItems: "center",
+                          }}
+                        >
+                          <Link
+                            to="/viewMatrialItemList"
+                            style={{
+                              color: "blue",
+                            }}
+                          >
+                            View all material items...
+                          </Link>
+                        </div>
                       </div>
                     </div>
                   </div>
