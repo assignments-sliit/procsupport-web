@@ -68,6 +68,18 @@ const AddNewPR = ({ setAlert, addPR, isAuthenticated }) => {
                 />
               </div>
               <div className="form-group">
+              <select
+                  id="supplier"
+                  className="form-control"
+
+                >
+                  <option selected>Material</option>
+                  <option>Cement</option>
+                  <option>Sand</option>
+                  <option>Tiles </option>
+                </select>
+              </div>
+              <div className="form-group">
                 <input
                   type="number"
                   className="form-control form-control-lg"
