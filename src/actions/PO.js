@@ -18,7 +18,7 @@ export const CreatePO = (formData) => async (dispatch) => {
       type: PO_ERROR,
       payload: {
         msg: err.response.statusText,
-        status: err.err.response.status,
+        status: err.response.status,
       },
     });
   }
