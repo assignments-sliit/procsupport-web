@@ -1,10 +1,48 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-//import axios from "axios";
-
-//var DatePicker = require("react-bootstrap-date-picker");
+import axios from "axios";
 
 class ViewSelectedDelivery extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      po: null,
+    };
+
+    this.creteDevlivery = this.creteDevlivery.bind(this);
+  }
+
+  async creteDevlivery(priId) {
+    console.log(priId)
+    const response = await axios.get(
+      `https://procsupport-api.onrender.com/api/pr/get/pr/${priId}`
+    );
+
+    if (response.status === 200) {
+      this.setState({
+        pr: response.data.purchase_request,
+      });
+    }
+  }
+
+
+  componentDidMount() {
+    this.getPRRecord(this?.props?.params?.id);
+  }
+
+  async getPRRecord(poId) {
+    console.log(poId)
+    const response = await axios.get(
+      `https://procsupport-api.onrender.com/api/po/get/one/${poId}`
+    );
+
+    if (response.status === 200) {
+      this.setState({
+        pr: response.data.purchase_request,
+      });
+    }
+  }
+
   render() {
     return (
       <div className="viewSelectedDelivery">
@@ -12,21 +50,16 @@ class ViewSelectedDelivery extends Component {
           <div className="row">
             <div className="col-md-128 m-auto">
               <h2>Create Delivery</h2>
-              <br />
-              <br />
-              <br />
-
+              <hr/>
+              {this.state.po?.status === "PENDING" && (
+                <>
+                  <button onClick={this.approvePR} className="btn btn-md btn-success float-left">
+                    Create Delivery Order
+                  </button>
+                </>
+              )}
               <form>
                 <div className="form-row">
-                  <div className="form-group col-md-3">
-                    <label htmlFor="delid">Delivery ID</label>
-                    <input
-                      type="text"
-                      className="form-control"
-                      id="delid"
-                      readOnly
-                    />
-                  </div>
                   <div className="form-group col-md-3">
                     <label htmlFor="poid">PO ID</label>
                     <input
@@ -34,6 +67,7 @@ class ViewSelectedDelivery extends Component {
                       className="form-control"
                       id="poid"
                       readOnly
+                      value={this.state.po?.poid}
                     />
                   </div>
                   <div className="form-group col-md-6">
@@ -43,6 +77,7 @@ class ViewSelectedDelivery extends Component {
                       className="form-control"
                       id="supplier"
                       readOnly
+                      value={this.state.po?.supplierId}
                     />
                   </div>
                 </div>
@@ -52,19 +87,9 @@ class ViewSelectedDelivery extends Component {
                     type="text"
                     className="form-control"
                     id="address"
-                    readOnly
                   />
                 </div>
                 <div className="form-row">
-                  <div className="form-group col-md-3">
-                    <label htmlFor="createdOn">Created Date</label>
-                    <input
-                      type="Date"
-                      className="form-control"
-                      id="createdOn"
-                      readOnly
-                    />
-                  </div>
                   <div className="form-group col-md-3">
                     <label htmlFor="status">Delivery Status</label>
                     <select id="status" class="form-control">
@@ -74,17 +99,7 @@ class ViewSelectedDelivery extends Component {
                       <option> Delivered </option>
                     </select>
                   </div>
-                </div>
-                <div className="form-row">
-                  <div className="form-group col-md-4">
-                    <label htmlFor="amount">Amount</label>
-                    <input
-                      type="text"
-                      className="form-control"
-                      id="amount"
-                      readOnly
-                    />
-                  </div>
+                 
                   <div className="form-group col-md-4">
                     <label htmlFor="status">Payment Method</label>
                     <input

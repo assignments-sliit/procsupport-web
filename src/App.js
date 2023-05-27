@@ -19,6 +19,7 @@ import ApproverListView from "./components/approver/ApproverListView";
 import ViewSelectedPRRecord from "./components/approver/ViewSelectedPRRecord";
 import ReceiverListView from "./components/receiver/ViewDeliveryList";
 import CreateNewDelivery from "./components/receiver/CreateNewDelivery";
+import ViewSelectedDelivery from "./components/receiver/ViewSelectedDelivery";
 import AdminHomePage from "./components/admin/AdminHomePage";
 import SupplierList from "./components/admin/SupplierList";
 import AddNewSupplier from "./components/admin/AddNewSupplier";
@@ -58,6 +59,11 @@ const App = () => {
             element={<ReceiverListView />}
           />
 
+<Route
+            exact
+            path="/viewSelectedDelivery/:id"
+            element={<ViewSelectedDelivery />}
+          />
           <Route exact path="/addNewPR" element={<AddNewPR />} />
 
           <Route

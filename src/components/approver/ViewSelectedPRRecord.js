@@ -166,7 +166,7 @@ class ViewSelectedPRRecord extends Component {
                   />
                 </div>
                 <div className="form-row">
-                  <div className="form-group col-md-4">
+                  {/* <div className="form-group col-md-4">
                     <label htmlFor="createdOn">Created Date</label>
                     <input
                       type="Date"
@@ -175,7 +175,7 @@ class ViewSelectedPRRecord extends Component {
                       readOnly
                       value={this.state.pr?.createdOn}
                     />
-                  </div>
+                  </div> */}
                   <div className="form-group col-md-4">
                     <label htmlFor="status">Status</label>
                     <input
