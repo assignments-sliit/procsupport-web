@@ -14,6 +14,8 @@ const AddNewSupplier = ({
 }) => {
   const navigate = useNavigate();
 
+  const [isReset, setIsReset] = useState(false);
+
   const [formData, setFormData] = useState({
     supplierName: "",
     supplierUsername: "",
@@ -63,6 +65,23 @@ const AddNewSupplier = ({
         navigate("/viewSupplierList");
       });
     }
+  };
+
+  const handleReset = () => {
+    setFormData({
+      supplierName: "",
+      supplierUsername: "",
+      mainSupply: "",
+      address: "",
+      contactPersonName: "",
+      contactNumber: "",
+      supplierUserPassword: "",
+    });
+    setIsReset(true);
+  };
+
+  const handleCancel = () => {
+    navigate("/viewSupplierList");
   };
 
   return (
@@ -168,6 +187,21 @@ const AddNewSupplier = ({
                 className="btn btn-md btn-success float-right"
                 value="Add new supplier"
               />
+              <button
+                type="button"
+                className="btn btn-md btn-primary float-right mr-2 btn-no-shadow"
+                onClick={handleReset}
+                name="Reset"
+              >
+                Reset data
+              </button>
+              <button
+                type="button"
+                className="btn btn-md btn-danger float-right mr-2 btn-no-shadow"
+                onClick={handleCancel}
+              >
+                Back to supplier list
+              </button>
             </form>
           </div>
         </div>

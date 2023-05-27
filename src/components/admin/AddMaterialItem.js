@@ -22,6 +22,7 @@ const AddMaterialItem = ({ setAlert, addMaterialItem, getMaterialItems }) => {
   const [itemNames, setItemNames] = useState([]);
   const [selectedItem, setSelectedItem] = useState("");
   const [selectedTypeId, setSelectedTypeId] = useState("");
+  const [isReset, setIsReset] = useState(false);
 
   const onChange = (e) =>
     setFormData({
@@ -55,6 +56,16 @@ const AddMaterialItem = ({ setAlert, addMaterialItem, getMaterialItems }) => {
     });
   };
 
+  const handleReset = () => {
+    setFormData({
+      materialTypeId: "",
+      materialName: "",
+      unitPrice: "",
+      availableQty: "",
+    });
+    setIsReset(true);
+  };
+
   useEffect(() => {
     axios
       .get("https://procsupport-api.onrender.com/api/mt/get/all", {
@@ -76,7 +87,15 @@ const AddMaterialItem = ({ setAlert, addMaterialItem, getMaterialItems }) => {
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+
+    if (isReset) {
+      setIsReset(false);
+    }
+  }, [isReset]);
+
+  const handleCancel = () => {
+    navigate("/viewMatrialItemList");
+  };
 
   return (
     <section className="addMaterialItem">
@@ -139,8 +158,23 @@ const AddMaterialItem = ({ setAlert, addMaterialItem, getMaterialItems }) => {
               <input
                 type="submit"
                 className="btn btn-md btn-success float-right"
-                value="Add new Material Type"
+                value="Add new material item"
               />
+              <button
+                type="button"
+                className="btn btn-md btn-primary float-right mr-2 btn-no-shadow"
+                onClick={handleReset}
+                name="Reset"
+              >
+                Reset data
+              </button>
+              <button
+                type="button"
+                className="btn btn-md btn-danger float-right mr-2 btn-no-shadow"
+                onClick={handleCancel}
+              >
+                Back to material items list
+              </button>
             </form>
           </div>
         </div>
