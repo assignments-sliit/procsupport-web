@@ -36,6 +36,6 @@ export const getSuppliers = () => async (dispatch) => {
     dispatch({
       //type: GET_USERS_FAIL,
     });
-    dispatch(setAlert("Failed to get users", "danger"));
+    dispatch(setAlert("Failed to get suppliers", "danger"));
   }
 };
