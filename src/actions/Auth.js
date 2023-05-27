@@ -24,3 +24,19 @@ export const addUser = (formData) => async (dispatch) => {
     });
   }
 };
+
+// Get all users
+export const getUsers = () => async (dispatch) => {
+  try {
+    const res = await api.get("/users/admin/get/all");
+    dispatch({
+      //type: GET_USERS_SUCCESS,
+      payload: res.data.users,
+    });
+  } catch (err) {
+    dispatch({
+      //type: GET_USERS_FAIL,
+    });
+    dispatch(setAlert("Failed to get users", "danger"));
+  }
+};

@@ -9,7 +9,7 @@ import AddNewUser from "./components/admin/AddNewUser";
 import UserList from "./components/admin/UsersList";
 import Navbar from "./components/layout/Navbar";
 import Landing from "./components/layout/Landing";
-import Footer from "./components/layout/Footer";
+//import Footer from "./components/layout/Footer";
 import Login from "./components/auth/Login";
 import CreatePurchaseOrder from "./components/purchaser/CreatePurchaseOrder";
 import ApprovedPurchaseList from "./components/purchaser/ApprovedPurchaseList";
@@ -27,6 +27,7 @@ import AddMaterialType from "./components/admin/AddMaterialType";
 import MaterialList from "./components/admin/MatrialList";
 import MaterialItemList from "./components/admin/MaterialItemList";
 import AddMaterialItem from "./components/admin/AddMaterialItem";
+import Alert from "./components/layout/Alert";
 
 import store from "./store";
 
@@ -35,6 +36,7 @@ const App = () => {
     <Provider store={store}>
       <Router>
         <Navbar />
+        <Alert />
 
         <Routes>
           <Route exact path="/" element={<Landing />} />
@@ -96,7 +98,7 @@ const App = () => {
           />
         </Routes>
 
-        <Footer />
+        {/* <Footer /> */}
       </Router>
     </Provider>
   );
