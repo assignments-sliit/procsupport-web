@@ -86,7 +86,7 @@ class PRListView extends Component {
                       <th scope="col">Description</th>
                       <th scope="col">Amount</th>
                       <th scope="col">Created On</th>
-                      <th scope="col">Updated On</th>
+                      {/* <th scope="col">Updated On</th> */}
                       <th scope="col">Status</th>
                     </tr>
                   </thead>
@@ -101,7 +101,7 @@ class PRListView extends Component {
                         <td>{requestor.description}</td>
                         <td>{requestor.amount}</td>
                         <td>{requestor.createdOn}</td>
-                        <td>{requestor.updatedOn}</td>
+                        {/* <td>{requestor.updatedOn}</td> */}
                         <td>{requestor.status}</td>
                       </tr>
                     ))}
