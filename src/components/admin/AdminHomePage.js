@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import MaterialList from "./MatrialList";
 import UsersListItem from "./UsersListItem";
+import SupplierListItem from "./SupplierListItem";
 
 // class AdminHomePage extends Component {
 //   render() {
@@ -211,7 +212,7 @@ class AdminHomePage extends Component {
                             className="card-title"
                             style={{ textAlign: "left" }}
                           >
-                            <b>Existing Users</b>
+                            <b>Suppliers</b>
                           </h4>
                         </div>
                         <div
@@ -219,7 +220,7 @@ class AdminHomePage extends Component {
                           style={{ maxHeight: "300px", overflowY: "auto" }}
                         >
                           <br />
-                          <UsersListItem />
+                          <SupplierListItem />
                         </div>
                         <div
                           className="card-footer"
@@ -230,12 +231,12 @@ class AdminHomePage extends Component {
                           }}
                         >
                           <Link
-                            to="/viewUserList"
+                            to="/viewSupplierList"
                             style={{
                               color: "blue",
                             }}
                           >
-                            View all users...
+                            View all suppliers...
                           </Link>
                         </div>
                       </div>

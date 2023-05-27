@@ -43,7 +43,7 @@ const AddNewUser = ({ setAlert, addUser, getUsers, isAuthenticated }) => {
 
       addUser(newUser).then(() => {
         getUsers();
-        navigate("/adminHomePage");
+        navigate("/viewUserList");
       });
     }
   };

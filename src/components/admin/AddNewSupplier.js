@@ -4,9 +4,14 @@ import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 
 import { setAlert } from "../../actions/Alert";
-import { addSupplier } from "../../actions/Suppliers";
+import { addSupplier, getSuppliers } from "../../actions/Suppliers";
 
-const AddNewSupplier = ({ setAlert, addSupplier, isAuthenticated }) => {
+const AddNewSupplier = ({
+  setAlert,
+  addSupplier,
+  getSuppliers,
+  isAuthenticated,
+}) => {
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
@@ -42,7 +47,7 @@ const AddNewSupplier = ({ setAlert, addSupplier, isAuthenticated }) => {
     if (supplierUserPassword !== supplierUserPassword_2) {
       setAlert("Passwords do not match", "danger");
     } else {
-      addSupplier({
+      const newSupplier = {
         supplierName,
         supplierUsername,
         mainSupply,
@@ -51,9 +56,12 @@ const AddNewSupplier = ({ setAlert, addSupplier, isAuthenticated }) => {
         contactNumber,
         supplierUserPassword,
         supplierUserPassword_2,
+      };
+
+      addSupplier(newSupplier).then(() => {
+        getSuppliers();
+        navigate("/viewSupplierList");
       });
-      setAlert("Supplier added successfully", "success");
-      navigate("/adminHomePage");
     }
   };
 
@@ -171,6 +179,7 @@ const AddNewSupplier = ({ setAlert, addSupplier, isAuthenticated }) => {
 AddNewSupplier.propTypes = {
   setAlert: PropTypes.func.isRequired,
   addSupplier: PropTypes.func.isRequired,
+  getSuppliers: PropTypes.func.isRequired,
   isAuthenticated: PropTypes.bool,
 };
 
@@ -178,6 +187,8 @@ const mapStatetoProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
 });
 
-export default connect(mapStatetoProps, { setAlert, addSupplier })(
-  AddNewSupplier
-);
+export default connect(mapStatetoProps, {
+  setAlert,
+  addSupplier,
+  getSuppliers,
+})(AddNewSupplier);
