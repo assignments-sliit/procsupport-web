@@ -110,6 +110,7 @@ const AddPO = ({ setAlert, CreatePO, getPRList }) => {
                                 <select
                                     id="supplier"
                                     className="form-control"
+                                    name="supplierId"
                                     value={supplierId}
                                     onChange={onChange}
                                 >
