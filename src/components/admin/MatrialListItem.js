@@ -1,7 +1,8 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 
-class SupplierListItem extends Component {
+class MatrialListItem extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -13,23 +14,23 @@ class SupplierListItem extends Component {
   }
 
   componentDidMount() {
-    this.fetchSupplierList();
+    this.fetchMatrialList();
   }
 
   componentDidUpdate(prevProps) {
-    if (prevProps.updatedSupplier !== this.props.updatedSupplier) {
-      this.fetchSupplierList();
+    if (prevProps.updatedMatrial !== this.props.updatedMatrial) {
+      this.fetchMatrialList();
     }
   }
 
-  fetchSupplierList = () => {
+  fetchMatrialList = () => {
     axios
-      .get("https://procsupport-api.onrender.com/api/suppliers/get/all", {
+      .get("https://procsupport-api.onrender.com/api/mt/get/all", {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       })
       .then((response) => {
         this.setState({
-          List: response.data.records,
+          List: response.data.data,
         });
       })
       .catch(function (error) {
@@ -43,22 +44,15 @@ class SupplierListItem extends Component {
         <table className="table" style={{ width: "100%" }}>
           <thead style={{ textAlign: "center" }}>
             <tr className="table-success">
-              <th scope="col">Supplier Name</th>
-              <th scope="col">Username</th>
-              <th scope="col">Main Supply</th>
-              <th scope="col">Address</th>
+              <th scope="col">Material Type</th>
+              <th scope="col">Unit of Measurement</th>
             </tr>
           </thead>
           <tbody>
-            {this.state.List.map((supplier) => (
-              <tr
-                key={supplier.id}
-                className={supplier.selected ? "selected" : ""}
-              >
-                <td>{supplier.supplierName}</td>
-                <td>{supplier.supplierUsername}</td>
-                <td>{supplier.mainSupply}</td>
-                <td>{supplier.address}</td>
+            {this.state.List.map((mType) => (
+              <tr key={mType.id} className={mType.selected ? "selected" : ""}>
+                <td>{mType.materialType}</td>
+                <td style={{ textAlign: "center" }}>{mType.uom}</td>
               </tr>
             ))}
           </tbody>
@@ -68,4 +62,4 @@ class SupplierListItem extends Component {
   }
 }
 
-export default SupplierListItem;
+export default MatrialListItem;

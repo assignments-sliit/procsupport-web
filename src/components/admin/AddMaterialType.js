@@ -3,10 +3,9 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-//import { setAlert } from "../../actions/Alert";
-import { addMaterialType } from "../../actions/Materials";
+import { addMaterialType, getMaterialTypes } from "../../actions/Materials";
 
-const AddMaterialType = ({ setAlert, addMaterialType }) => {
+const AddMaterialType = ({ addMaterialType, getMaterialTypes }) => {
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
@@ -25,12 +24,15 @@ const AddMaterialType = ({ setAlert, addMaterialType }) => {
   const onSubmit = async (e) => {
     e.preventDefault();
 
-    addMaterialType({
+    const newMaterialType = {
       materialType,
       uom,
+    };
+
+    addMaterialType(newMaterialType).then(() => {
+      getMaterialTypes();
+      navigate("/viewMatrialList");
     });
-    setAlert("Material type added successfully", "success");
-    navigate("/adminHomePage");
   };
 
   return (
@@ -80,6 +82,9 @@ const AddMaterialType = ({ setAlert, addMaterialType }) => {
 
 AddMaterialType.propTypes = {
   addMaterialType: PropTypes.func.isRequired,
+  getMaterialTypes: PropTypes.func.isRequired,
 };
 
-export default connect(null, { addMaterialType })(AddMaterialType);
+export default connect(null, { addMaterialType, getMaterialTypes })(
+  AddMaterialType
+);
