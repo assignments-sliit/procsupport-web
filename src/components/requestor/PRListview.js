@@ -7,7 +7,7 @@ class PRListView extends Component {
     super(props);
     this.state = {
       List: [],
-      Approved: [],
+      Approved: [], 
       Rejected: [],
       MasterChecked: false,
       SelectedList: [],
@@ -74,6 +74,7 @@ class PRListView extends Component {
               <Link to="/addNewPR" className="btn btn-md btn-success float-right">
                 <i className="fa-duotone fa-plus"></i> Add Purchase Request
               </Link>
+              <br/>
               <br/>
               <br/>
               <div className="table-responsive-lg">

@@ -13,12 +13,14 @@ import Landing from "./components/layout/Landing";
 import Login from "./components/auth/Login";
 import CreatePurchaseOrder from "./components/purchaser/CreatePurchaseOrder";
 import ApprovedPurchaseList from "./components/purchaser/ApprovedPurchaseList";
+import NewCreatePurchaseOrder from "./components/purchaser/NewCreatePurchaseOrder";
 import PRListView from "./components/requestor/PRListview";
 import AddNewPR from "./components/requestor/AddNewPR";
 import ApproverListView from "./components/approver/ApproverListView";
 import ViewSelectedPRRecord from "./components/approver/ViewSelectedPRRecord";
 import ReceiverListView from "./components/receiver/ViewDeliveryList";
 import CreateNewDelivery from "./components/receiver/CreateNewDelivery";
+import ViewSelectedDelivery from "./components/receiver/ViewSelectedDelivery";
 import AdminHomePage from "./components/admin/AdminHomePage";
 import SupplierList from "./components/admin/SupplierList";
 import AddNewSupplier from "./components/admin/AddNewSupplier";
@@ -60,12 +62,23 @@ const App = () => {
             element={<ReceiverListView />}
           />
 
+<Route
+            exact
+            path="/viewSelectedDelivery/:id"
+            element={<ViewSelectedDelivery />}
+          />
           <Route exact path="/addNewPR" element={<AddNewPR />} />
 
           <Route
             exact
             path="/createPurchaseOrder/:id"
             element={<CreatePurchaseOrder />}
+          />
+
+<Route
+            exact
+            path="/newCreatePurchaseOrder/"
+            element={<NewCreatePurchaseOrder />}
           />
 
           <Route

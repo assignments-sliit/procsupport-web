@@ -87,17 +87,6 @@ class CreatePurchaseOrder extends Component {
                       <option>Kinetic </option>
                     </select>
                   </div>
-                  <div className="form-group col">
-                    <label for="amount">Amount</label>
-                    <input
-                      type="text"
-                      className="form-control"
-                      id="amount"
-                      value={this.state.amount}
-                      onChange={this.onChangeamount}
-                      required
-                    />
-                  </div>
                 </div>
                 <div className="form-row">
                   <div className="form-group col">
@@ -134,41 +123,6 @@ class CreatePurchaseOrder extends Component {
                 </div>
               </form>
             </div>
-
-            {showing ? (
-              <div>
-                <hr />
-                <br />
-                <br />
-                <h2>Materials</h2>
-                <h4>Total Material Cost: LKR 23000</h4>
-                <table className="table">
-                  <thead>
-                    <tr>
-                      <th>Requirement Id</th>
-                      <th>Material Type</th>
-                      <th>Material Name</th>
-                      <th>Quantity</th>
-                      <th>Quantity UoM</th>
-                      <th>Unit Price</th>
-                      <th>Total Price</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {/* {getMaterial.map(render_getMaterial)}  */}
-                    <tr>
-                      <td>MR-001</td>
-                      <td>Cement</td>
-                      <td>Holcim Cement</td>
-                      <td>10</td>
-                      <td>10kg Packs</td>
-                      <td>2300</td>
-                      <td>23000</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            ) : null}
           </div>
         </div>
       </div>

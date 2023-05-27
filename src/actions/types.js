@@ -35,10 +35,17 @@ export const SUPPLIER_ERROR = "SUPPLIER_ERROR";
 export const DELETE_SUPPLIER = "DELETE_SUPPLIER";
 export const ADD_SUPPLIER = "ADD_SUPPLIER";
 
+//PR related commands
 export const ADD_COMMENT = "ADD_COMMENT";
 export const REMOVE_COMMENT = "REMOVE_COMMENT";
 export const PR_ERROR = "PR_ERROR";
 export const ADD_PR = "ADD_PR";
+
+//PO related commands
+export const ADD_COMMENT_PO = "ADD_COMMENT_PO";
+export const REMOVE_COMMENT_PO = "REMOVE_COMMENT_PO";
+export const PO_ERROR = "PO_ERROR";
+export const ADD_PO = "ADD_PO";
 
 
 // Materials related commands
