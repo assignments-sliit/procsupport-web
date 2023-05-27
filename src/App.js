@@ -13,6 +13,7 @@ import Landing from "./components/layout/Landing";
 import Login from "./components/auth/Login";
 import CreatePurchaseOrder from "./components/purchaser/CreatePurchaseOrder";
 import ApprovedPurchaseList from "./components/purchaser/ApprovedPurchaseList";
+import NewCreatePurchaseOrder from "./components/purchaser/NewCreatePurchaseOrder";
 import PRListView from "./components/requestor/PRListview";
 import AddNewPR from "./components/requestor/AddNewPR";
 import ApproverListView from "./components/approver/ApproverListView";
@@ -72,6 +73,12 @@ const App = () => {
             exact
             path="/createPurchaseOrder/:id"
             element={<CreatePurchaseOrder />}
+          />
+
+<Route
+            exact
+            path="/mewCreatePurchaseOrder/"
+            element={<NewCreatePurchaseOrder />}
           />
 
           <Route

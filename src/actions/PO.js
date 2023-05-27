@@ -1,6 +1,6 @@
 import api from "../utils/Api";
 //import { setAlert } from "./Alert";
-import { PR_ERROR, ADD_PR } from "./types";
+import { PO_ERROR, ADD_PO } from "./types";
 
 // Add supplier
 export const addPO = (formData) => async (dispatch) => {
