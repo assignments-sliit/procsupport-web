@@ -42,14 +42,14 @@ const AddPO = ({ setAlert, CreatePO, getPRList }) => {
         e.preventDefault();
 
         const newPOItem = {
-            supplierId: "",
-            description: "",
+            supplierId,
+            description,
             prid: selectedTypeId,
         };
 
         CreatePO(newPOItem).then(() => {
             getPRList();
-            navigate("/viewMatrialItemList");
+            navigate("/ApprovedPurchaseList");
         });
     };
 
@@ -107,15 +107,17 @@ const AddPO = ({ setAlert, CreatePO, getPRList }) => {
                                 </select>
                             </div>
                             <div className="form-group">
-                                <input
-                                    type="text"
-                                    className="form-control form-control-lg"
-                                    placeholder="Suplier"
-                                    name="supplierId"
+                                <select
+                                    id="supplier"
+                                    className="form-control"
                                     value={supplierId}
                                     onChange={onChange}
-                                    required
-                                />
+                                >
+                                    <option selected>Suplier</option>
+                                    <option>Holcim</option>
+                                    <option>DSI</option>
+                                    <option>Kinetic </option>
+                                </select>
                             </div>
                             <div className="form-group">
                                 <input

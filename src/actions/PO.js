@@ -37,6 +37,6 @@ export const getPRList = () => async (dispatch) => {
     dispatch({
       //type: GET_USERS_FAIL,
     });
-    dispatch(setAlert("Failed to get material types", "danger"));
+    dispatch(setAlert("Failed to get PR Id", "danger"));
   }
 };
