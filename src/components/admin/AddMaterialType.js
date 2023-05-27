@@ -13,6 +13,8 @@ const AddMaterialType = ({ addMaterialType, getMaterialTypes }) => {
     uom: "",
   });
 
+  const [isReset, setIsReset] = useState(false);
+
   const { materialType, uom } = formData;
 
   const onChange = (e) =>
@@ -33,6 +35,18 @@ const AddMaterialType = ({ addMaterialType, getMaterialTypes }) => {
       getMaterialTypes();
       navigate("/viewMatrialList");
     });
+  };
+
+  const handleReset = () => {
+    setFormData({
+      materialType: "",
+      uom: "",
+    });
+    setIsReset(true);
+  };
+
+  const handleCancel = () => {
+    navigate("/viewMatrialList");
   };
 
   return (
@@ -70,8 +84,23 @@ const AddMaterialType = ({ addMaterialType, getMaterialTypes }) => {
               <input
                 type="submit"
                 className="btn btn-md btn-success float-right"
-                value="Add new Material Type"
+                value="Add new material type"
               />
+              <button
+                type="button"
+                className="btn btn-md btn-primary float-right mr-2 btn-no-shadow"
+                onClick={handleReset}
+                name="Reset"
+              >
+                Reset data
+              </button>
+              <button
+                type="button"
+                className="btn btn-md btn-danger float-right mr-2 btn-no-shadow"
+                onClick={handleCancel}
+              >
+                Back to material type list
+              </button>
             </form>
           </div>
         </div>

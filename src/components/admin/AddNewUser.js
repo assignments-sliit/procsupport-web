@@ -21,6 +21,8 @@ const AddNewUser = ({ setAlert, addUser, getUsers, isAuthenticated }) => {
   const { name, username, userstatus, usertype, password, password2 } =
     formData;
 
+  const [isReset, setIsReset] = useState(false);
+
   const onChange = (e) =>
     setFormData({
       ...formData,
@@ -46,6 +48,22 @@ const AddNewUser = ({ setAlert, addUser, getUsers, isAuthenticated }) => {
         navigate("/viewUserList");
       });
     }
+  };
+
+  const handleReset = () => {
+    setFormData({
+      name: "",
+      username: "",
+      userstatus: "",
+      usertype: "",
+      password: "",
+      password2: "",
+    });
+    setIsReset(true);
+  };
+
+  const handleCancel = () => {
+    navigate("/viewUserList");
   };
 
   return (
@@ -128,6 +146,21 @@ const AddNewUser = ({ setAlert, addUser, getUsers, isAuthenticated }) => {
                 className="btn btn-md btn-success float-right"
                 value="Add new user"
               />
+              <button
+                type="button"
+                className="btn btn-md btn-primary float-right mr-2 btn-no-shadow"
+                onClick={handleReset}
+                name="Reset"
+              >
+                Reset data
+              </button>
+              <button
+                type="button"
+                className="btn btn-md btn-danger float-right mr-2 btn-no-shadow"
+                onClick={handleCancel}
+              >
+                Back to user list
+              </button>
             </form>
           </div>
         </div>

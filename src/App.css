@@ -349,7 +349,7 @@ button {
   background: url('./images/procsupport1.jpg') no-repeat;
   background-size: cover;
   background-position: center;
-  height: 1000vh; /* Use min-height instead of height */
+  height: 100vh;
   margin-top: -24px;
   margin-bottom: -50px;
 }
@@ -606,4 +606,8 @@ button {
 
 .custom-table-width {
   width: 100%;
+}
+
+.btn-no-shadow {
+  box-shadow: none;
 }

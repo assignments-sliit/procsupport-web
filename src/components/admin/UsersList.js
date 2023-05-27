@@ -9,18 +9,31 @@ const UserList = () => {
         <div className="row">
           <div className="col-md-128 m-auto">
             <br />
-            <h2>All Users</h2>
+            <div className="d-flex align-items-center mb-3">
+              <Link to="/adminHomePage" className="btn btn-white">
+                <i className="fa-duotone fa-arrow-left me-2"></i> Back to
+                dashboard
+              </Link>
+            </div>
 
-            <br />
-            <UsersListItem />
+            <h2 className="mb-0">All Users</h2>
 
             <br />
             <Link
               to="/addNewUser"
               className="btn btn-lg btn-primary float-right"
             >
-              <i className="fa-duotone fa-plus"></i> Add New User
+              <i
+                className="fad fa-duotone fa-plus"
+                style={{ color: "white" }}
+              ></i>{" "}
+              Add New User
             </Link>
+            <br />
+            <br />
+            <UsersListItem />
+
+            <br />
           </div>
         </div>
       </div>
