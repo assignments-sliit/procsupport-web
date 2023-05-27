@@ -3,38 +3,75 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 
 class AddNewPR extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
       pr: null,
       materials: [],
-      name: '',
-      id: '',
-      selectOptions: []
+      name: "",
+      id: "",
+      selectOptions: [],
     };
 
     this.addPR = this.addPR.bind(this);
   }
 
-  addPR() {
-    const authToken = `${localStorage.getItem("token")}`;
-    const payload = { "prName": this.state.pr?.prName, "description": this.state.pr?.description, "amount": this.state.pr?.amount};
-    const apiUrl = `https://procsupport-api.onrender.com/api/pr/create`
+  // addPR() {
+  //   const authToken = `${localStorage.getItem("token")}`;
+  //   const payload = { "prName": this.state.pr?.prName, "description": this.state.pr?.description, "amount": this.state.pr?.amount};
+  //   const apiUrl = `https://procsupport-api.onrender.com/api/pr/create`
 
-    axios.post(apiUrl, payload, {
-      headers: {
-        Authorization: `Bearer ${authToken}`
-      }
-    })
+  //   axios.post(apiUrl, payload, {
+  //     headers: {
+  //       Authorization: `Bearer ${authToken}`
+  //     }
+  //   })
+  //     .then((response) => {
+  //       if (response.status === 200) {
+  //         this.props.navigate("/PRListView");
+  //       }
+  //     })
+  //     .catch((error) => { });
+  // }
+
+  addPR() {
+    const authToken = localStorage.getItem("token");
+    const payload = {
+      prName: this.state.pr?.prName,
+      description: this.state.pr?.description,
+      amount: this.state.pr?.amount,
+    };
+    const apiUrl = `https://procsupport-api.onrender.com/api/pr/create`;
+
+    axios
+      .post(apiUrl, payload, {
+        headers: {
+          Authorization: `Bearer ${authToken}`,
+        },
+      })
       .then((response) => {
         if (response.status === 200) {
           this.props.navigate("/PRListView");
         }
       })
-      .catch((error) => { });
+      .catch((error) => {
+        if (error.response) {
+          // The request was made and the server responded with a status code
+          // that falls out of the range of 2xx
+          console.log(error.response.data);
+          console.log(error.response.status);
+          console.log(error.response.headers);
+        } else if (error.request) {
+          // The request was made but no response was received
+          // `error.request` is an instance of XMLHttpRequest in the browser
+          console.log(error.request);
+        } else {
+          // Something happened in setting up the request that triggered an Error
+          console.log("Error", error.message);
+        }
+        console.log(error.config);
+      });
   }
-
 
   // getMateralType() {
   //   axios
@@ -53,28 +90,31 @@ class AddNewPR extends Component {
   // }
 
   async getOptions() {
-    const res = await axios.get('https://procsupport-api.onrender.com/api/mt/get/all', {
-      headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-    })
-    const data = res.data
+    const res = await axios.get(
+      "https://procsupport-api.onrender.com/api/mt/get/all",
+      {
+        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+      }
+    );
+    const data = res.data;
 
-    const options = data.map(d => ({
-      "materialType": d.name,
-      "materialTypeId": d.id
-    }))
+    const options = data.map((d) => ({
+      materialType: d.name,
+      materialTypeId: d.id,
+    }));
 
-    this.setState({ selectOptions: options })
+    this.setState({ selectOptions: options });
     // .catch(function (error) {
     //   console.log(error);
     // });
   }
 
   componentDidMount() {
-    this.getOptions()
+    this.getOptions();
   }
 
   render() {
-    console.log(this.state.selectOptions)
+    console.log(this.state.selectOptions);
     const { showing, setDisable, disable, setInputValue } = this.state;
     return (
       <div className="addNewPR">
@@ -157,7 +197,6 @@ class AddNewPR extends Component {
                     />
                   </div>
                 </div> */}
-
               </form>
               <br />
               <button

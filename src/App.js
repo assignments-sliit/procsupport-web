@@ -9,7 +9,7 @@ import AddNewUser from "./components/admin/AddNewUser";
 import UserList from "./components/admin/UsersList";
 import Navbar from "./components/layout/Navbar";
 import Landing from "./components/layout/Landing";
-import Footer from "./components/layout/Footer";
+//import Footer from "./components/layout/Footer";
 import Login from "./components/auth/Login";
 import CreatePurchaseOrder from "./components/purchaser/CreatePurchaseOrder";
 import ApprovedPurchaseList from "./components/purchaser/ApprovedPurchaseList";
