@@ -77,7 +77,7 @@ const App = () => {
 
 <Route
             exact
-            path="/mewCreatePurchaseOrder/"
+            path="/newCreatePurchaseOrder/"
             element={<NewCreatePurchaseOrder />}
           />
 

@@ -57,11 +57,18 @@ class ApprovedPurchaseList extends Component {
             </div>
           </div>
           <hr />
+          <Link to="/newCreatePurchaseOrder" className="btn btn-md btn-success float-right">
+                <i className="fa-duotone fa-plus"></i> Create Purchase Order
+              </Link>
+              <br/>
+              <br/>
+              <br/>
+
           <div className="table-responsive-lg">
             <table className="table">
               <thead>
                 <tr className="table-success">
-                  <th scope="col"></th>
+                  {/* <th scope="col"></th> */}
                   <th scope="col">PR ID</th>
                   <th scope="col">PR Name</th>
                   <th scope="col">Description</th>
@@ -69,16 +76,16 @@ class ApprovedPurchaseList extends Component {
                   <th scope="col">Created On</th>
                   <th scope="col">Updated On</th>
                   <th scope="col">Status</th>
-                  <th scope="col">Action</th>
+                  {/* <th scope="col">Action</th> */}
                 </tr>
               </thead>
               <tbody>
                 {this.state.list.map((approver) => (
                   <tr
-                    key={approver._id}
-                    className={approver.selected ? "selected" : ""}
+                    // key={approver._id}
+                    // className={approver.selected ? "selected" : ""}
                   >
-                    <th scope="row">
+                    {/* <th scope="row">
                       <input
                         type="checkbox"
                         checked={approver.selected}
@@ -86,7 +93,7 @@ class ApprovedPurchaseList extends Component {
                         id={`rowcheck${approver.id}`}
                         onChange={(e) => this.onItemCheck(e, approver)}
                       />
-                    </th>
+                    </th> */}
                     <td>{approver.prid}</td>
                     <td>{approver.prName}</td>
                     <td>{approver.description}</td>
@@ -94,14 +101,14 @@ class ApprovedPurchaseList extends Component {
                     <td>{approver.createdOn}</td>
                     <td>{approver.updatedOn}</td>
                     <td>{approver.status}</td>
-                    <td>
+                    {/* <td>
                       <Link
                         to={`/createPurchaseOrder/${approver.prid}`}
                         className="btn btn-success"
                       >
                         Action
                       </Link>
-                    </td>
+                    </td> */}
                   </tr>
                 ))}
               </tbody>
