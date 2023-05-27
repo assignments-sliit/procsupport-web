@@ -7,58 +7,45 @@ class ApprovedPurchaseList extends Component {
     super(props);
 
     this.state = {
-      List: [],
-      SelectedList: [],
-      MasterChecked: false,
-      prs: [],
+      list: [],
+      selectedList: [],
+      masterChecked: false,
     };
   }
 
   onItemCheck(e, item) {
-    let tempList = this.state.List;
-    tempList.map((user) => {
-      console.log("-------------", user, item);
+    const tempList = this.state.list.map((user) => {
       if (user._id === item._id) {
         user.selected = e.target.checked;
       }
       return user;
     });
 
-    //To Control Master Checkbox State
-    const totalItems = this.state.List.length;
+    const totalItems = this.state.list.length;
     const totalCheckedItems = tempList.filter((e) => e.selected).length;
 
-    // Update State
     this.setState({
-      MasterChecked: totalItems === totalCheckedItems,
-      List: tempList,
-      SelectedList: this.state.List.filter((e) => e.selected),
+      masterChecked: totalItems === totalCheckedItems,
+      list: tempList,
+      selectedList: tempList.filter((e) => e.selected),
     });
   }
 
   componentDidMount() {
     axios
-      .get("https://procsupport-api.onrender.com/api/pr/get/approved/all",
-         {
-          headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-        }
-      )
+      .get("https://procsupport-api.onrender.com/api/pr/get/approved/all", {
+        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+      })
       .then((response) => {
         console.log(response.data.response);
         this.setState({
-          List: response.data.data
+          list: response.data.data,
         });
       })
       .catch(function (error) {
         console.log(error);
       });
   }
-
-  // onSubmit() {
-  //   const { navigate } = this.props;
-  //   // Navigate to Another Component
-  //   navigate("/CreatePurchaseOrder");
-  // }
 
   render() {
     return (
@@ -73,8 +60,8 @@ class ApprovedPurchaseList extends Component {
           <div className="table-responsive-lg">
             <table className="table">
               <thead>
-                <tr class="table-success">
-                  <th scope="col">             </th>
+                <tr className="table-success">
+                  <th scope="col"></th>
                   <th scope="col">PR ID</th>
                   <th scope="col">PR Name</th>
                   <th scope="col">Description</th>
@@ -86,17 +73,17 @@ class ApprovedPurchaseList extends Component {
                 </tr>
               </thead>
               <tbody>
-                {this.state.List.map((approver) => (
+                {this.state.list.map((approver) => (
                   <tr
-                    key={approver.id}
-                    className={approver.selected ? "selected" : " "}
+                    key={approver._id}
+                    className={approver.selected ? "selected" : ""}
                   >
                     <th scope="row">
                       <input
                         type="checkbox"
                         checked={approver.selected}
                         className="form-check-input"
-                        id="rowcheck{user.id}"
+                        id={`rowcheck${approver.id}`}
                         onChange={(e) => this.onItemCheck(e, approver)}
                       />
                     </th>
@@ -107,17 +94,18 @@ class ApprovedPurchaseList extends Component {
                     <td>{approver.createdOn}</td>
                     <td>{approver.updatedOn}</td>
                     <td>{approver.status}</td>
-                    <td> <Link to={`/createPurchaseOrder/${this.state.List.filter((e) => e.selected)[0]?.prid
-                      }`}>
-                      <button checked={approver.selected} className="btn btn-success" id="rowcheck{user.id}" onClick={(e) => this.onItemCheck(e, approver)}>
+                    <td>
+                      <Link
+                        to={`/createPurchaseOrder/${approver.prid}`}
+                        className="btn btn-success"
+                      >
                         Action
-                      </button></Link></td>
+                      </Link>
+                    </td>
                   </tr>
                 ))}
               </tbody>
             </table>
-            <br />
-            <br />
           </div>
         </div>
       </div>

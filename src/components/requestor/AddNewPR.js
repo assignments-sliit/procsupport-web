@@ -73,7 +73,8 @@ const AddNewPR = ({ setAlert, addPR, isAuthenticated }) => {
               </div>
               <div className="form-group">
                 <input
-                  type="text"
+                  type="number"
+                  className="form-control form-control-lg"
                   placeholder="Amount"
                   name="amount"
                   value={amount}
