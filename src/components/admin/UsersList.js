@@ -11,12 +11,12 @@ const UserList = () => {
             <br />
             <div className="d-flex align-items-center mb-3">
               <Link to="/adminHomePage" className="btn btn-white">
-                <i className="fa-duotone fa-arrow-left me-2"></i> Back to
-                dashboard
+                <i className="fas fa-duotone fas fa-arrow-left me-2"></i>{" "}
+                &nbsp;&nbsp; Back to dashboard
               </Link>
             </div>
 
-            <h2 className="mb-0">All Users</h2>
+            <h2 className="mb-0">Existing Users</h2>
 
             <br />
             <Link
@@ -24,10 +24,10 @@ const UserList = () => {
               className="btn btn-lg btn-primary float-right"
             >
               <i
-                className="fad fa-duotone fa-plus"
+                className="fas fa-duotone fa-plus"
                 style={{ color: "white" }}
-              ></i>{" "}
-              Add New User
+              ></i>
+              &nbsp;&nbsp; Add new user
             </Link>
             <br />
             <br />
