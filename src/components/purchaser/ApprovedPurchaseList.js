@@ -74,7 +74,7 @@ class ApprovedPurchaseList extends Component {
                   <th scope="col">Description</th>
                   <th scope="col">Amount</th>
                   <th scope="col">Created On</th>
-                  <th scope="col">Updated On</th>
+                  {/* <th scope="col">Updated On</th> */}
                   <th scope="col">Status</th>
                   {/* <th scope="col">Action</th> */}
                 </tr>
@@ -99,7 +99,7 @@ class ApprovedPurchaseList extends Component {
                     <td>{approver.description}</td>
                     <td>{approver.amount}</td>
                     <td>{approver.createdOn}</td>
-                    <td>{approver.updatedOn}</td>
+                    {/* <td>{approver.updatedOn}</td> */}
                     <td>{approver.status}</td>
                     {/* <td>
                       <Link

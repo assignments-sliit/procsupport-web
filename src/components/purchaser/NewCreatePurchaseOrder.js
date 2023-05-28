@@ -143,7 +143,7 @@ const AddPO = ({ setAlert, CreatePO, getPRList }) => {
                             <input
                                 type="submit"
                                 className="btn btn-md btn-success float-right"
-                                value="Create Purchse Order"
+                                value="Create Purchase Order"
                             />
                         </form>
                     </div>
