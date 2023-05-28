@@ -21,12 +21,12 @@ class Landing extends Component {
                 <br />
                 <br />
                 <br />
-                {/* <p>
+                <p>
                   Are you a supplier for Procsupport? &nbsp;&nbsp;&nbsp;{" "}
-                  <a href="/supplierLogin">
+                  <a href="/slogin">
                     <u>Click here for login..</u>
                   </a>
-                </p> */}
+                </p>
               </div>
             </div>
           </div>
