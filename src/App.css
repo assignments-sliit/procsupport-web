@@ -607,3 +607,7 @@ button {
 .custom-table-width {
   width: 100%;
 }
+
+.btn-no-shadow {
+  box-shadow: none;
+}
