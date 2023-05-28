@@ -596,12 +596,13 @@ button {
 /* Admin Home Page */
 .adminHomePage {
   position: relative;
-  background: url('./images/procsupport1.jpg') no-repeat;
+  /* background: url('./images/procsupport1.jpg') no-repeat; */
   background-size: cover;
   background-position: center;
   height: 100vh;
   margin-top: -24px;
   margin-bottom: -50px;
+  background-color: transparent;
 }
 
 .custom-table-width {

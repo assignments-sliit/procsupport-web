@@ -5,6 +5,8 @@ import SupplierListItem from "./SupplierListItem";
 import MatrialListItem from "./MatrialListItem";
 import MaterialItemsList from "./MaterialItemsList";
 
+import Carousel from "react-bootstrap/Carousel";
+
 class AdminHomePage extends Component {
   render() {
     return (

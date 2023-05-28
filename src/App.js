@@ -30,6 +30,7 @@ import MaterialItemList from "./components/admin/MaterialItemList";
 import AddMaterialItem from "./components/admin/AddMaterialItem";
 import Alert from "./components/layout/Alert";
 import SupplierLogin from "./components/auth/SupplierLogin";
+//import POList from "./components/supplier/POList";
 
 import store from "./store";
 
@@ -105,6 +106,9 @@ const App = () => {
             path="/viewMatrialItemList"
             element={<MaterialItemList />}
           />
+
+          {/**Supplier tasks */}
+          {/* <Route exact path="/viewPOList" element={<POList />} /> */}
         </Routes>
 
         {/* <Footer /> */}
