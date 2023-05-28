@@ -17,6 +17,16 @@ class Landing extends Component {
                 <Link to="/login" className="btn btn-lg btn-primary">
                   Get Started
                 </Link>
+
+                <br />
+                <br />
+                <br />
+                {/* <p>
+                  Are you a supplier for Procsupport? &nbsp;&nbsp;&nbsp;{" "}
+                  <a href="/supplierLogin">
+                    <u>Click here for login..</u>
+                  </a>
+                </p> */}
               </div>
             </div>
           </div>

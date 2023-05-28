@@ -29,6 +29,7 @@ import MaterialList from "./components/admin/MatrialList";
 import MaterialItemList from "./components/admin/MaterialItemList";
 import AddMaterialItem from "./components/admin/AddMaterialItem";
 import Alert from "./components/layout/Alert";
+import SupplierLogin from "./components/auth/SupplierLogin";
 
 import store from "./store";
 
@@ -42,6 +43,7 @@ const App = () => {
         <Routes>
           <Route exact path="/" element={<Landing />} />
           <Route exact path="/login" element={<Login />} />
+          <Route exact path="/supplierLogin" element={<SupplierLogin />} />
           <Route exact path="/viewPRList" element={<PRListView />} />
 
           <Route
