@@ -81,8 +81,8 @@ class CreatePurchaseOrder extends Component {
                       value={this.state.supplier}
                       onChange={this.onChangesupplier}
                     >
-                      <option selected>Choose...</option>
-                      <option>Holcim</option>
+                      <option selected>Supplier</option>
+                      <option>Polroti Supplier reborn</option>
                       <option>DSI</option>
                       <option>Kinetic </option>
                     </select>

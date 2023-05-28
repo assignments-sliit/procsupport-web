@@ -76,7 +76,8 @@ const AddNewPR = ({ setAlert, addPR, isAuthenticated }) => {
                   <option selected>Material</option>
                   <option>Cement</option>
                   <option>Sand</option>
-                  <option>Tiles </option>
+                  <option>Broken tile pieces </option>
+                  <option>Tiless </option>
                 </select>
               </div>
               <div className="form-group">
