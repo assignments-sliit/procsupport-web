@@ -65,7 +65,7 @@ const App = () => {
             element={<ReceiverListView />}
           />
 
-<Route
+          <Route
             exact
             path="/viewSelectedDelivery/:id"
             element={<ViewSelectedDelivery />}
@@ -78,7 +78,7 @@ const App = () => {
             element={<CreatePurchaseOrder />}
           />
 
-<Route
+          <Route
             exact
             path="/newCreatePurchaseOrder/"
             element={<NewCreatePurchaseOrder />}

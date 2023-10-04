@@ -1,7 +1,6 @@
 import api from "../utils/Api";
 import { setAlert } from "./Alert";
 
-//import { REGISTER_SUCCESS, REGISTER_FAIL } from "./types";
 
 // supplier login
 export const supplierLogin = (email, password) => async (dispatch) => {

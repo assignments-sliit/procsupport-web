@@ -33,23 +33,6 @@ class ViewSelectedPRRecord extends Component {
   }
 
 
-
-  // approvePR() {
-  //   axios
-  //     .put("https://procsupport-api.onrender.com/api/pr/auth/status/approve", {
-  //       headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-  //       payload : {prid: this.state.pr?.prid},
-  //     })
-  //     .then((response) => {
-  //       if (response.status === 200) {
-  //         this.props.navigate("/viewApproverList");
-  //       }
-  //     })
-  //     .catch(function (error) {
-  //       console.log(error);
-  //     });
-  // }
-
   approvePR() {
     const authToken = `${localStorage.getItem("token")}`;
     const payload = { "prid": this.state.pr?.prid };
@@ -90,21 +73,7 @@ class ViewSelectedPRRecord extends Component {
       console.log(error);
     });
   }
-  // rejectPR() {
-  //   axios
-  //     .put("https://procsupport-api.onrender.com/api/pr/auth/status/decline", {
-  //       headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-  //       prid: this.state.pr?.prid,
-  //     })
-  //     .then((response) => {
-  //       if (response.status === 200) {
-  //         this.props.navigate("/viewApproverList");
-  //       }
-  //     })
-  //     .catch(function (error) {
-  //       console.log(error);
-  //     });
-  // }
+
 
   render() {
     return (

@@ -42,7 +42,6 @@ const SupplierLogin = () => {
           .then((res) => {
             if (res.status === 200) {
               console.log(res.data);
-              //const userType = res.data.data.usertype;
               localStorage.setItem("token", res.data.data.token);
 
               navigate("/");

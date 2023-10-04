@@ -1,5 +1,4 @@
 import api from "../utils/Api";
-//import { setAlert } from "./Alert";
 import { PR_ERROR, ADD_PR } from "./types";
 
 // Add supplier

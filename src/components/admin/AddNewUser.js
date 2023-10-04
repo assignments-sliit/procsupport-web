@@ -172,7 +172,7 @@ const AddNewUser = ({ setAlert, addUser, getUsers, isAuthenticated }) => {
 AddNewUser.propTypes = {
   setAlert: PropTypes.func.isRequired,
   addUser: PropTypes.func.isRequired,
-  getUsers: PropTypes.func.isRequired, //new
+  getUsers: PropTypes.func.isRequired, 
   isAuthenticated: PropTypes.bool,
 };
 
