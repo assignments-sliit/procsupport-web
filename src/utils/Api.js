@@ -7,7 +7,7 @@ const api = axios.create({
   baseURL: `https://procsupport-api.onrender.com/api`,
   headers: {
     "Content-Type": "application/json",
-    Authorization: `Bearer ${localStorage.getItem("token")}`, //new
+    Authorization: `Bearer ${localStorage.getItem("token")}`,
   },
 });
 

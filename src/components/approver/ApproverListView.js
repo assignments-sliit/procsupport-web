@@ -16,7 +16,6 @@ class ApproverListView extends Component {
   onItemCheck(e, item) {
     let tempList = this.state.List;
     tempList.map((user) => {
-      console.log("-------------", user, item);
       if (user._id === item._id) {
         user.selected = e.target.checked;
       }
